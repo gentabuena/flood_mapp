@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Flood MApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="signin_header">Header</string>
+
+    <string name="text_lorem_ipsum">Lorem Ipsum</string>
+    <string name="text_login">Log In</string>
+    <string name="text_register">Sign up</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">Password</string>
+    <string name="text_forgot_password">Forgot Password?</string>
+
+    <string name="text_no_account">Don\'t have an account?</string>
+    <string name="text_signup">Sign up!</string>
+</resources>
