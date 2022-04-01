@@ -22,23 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         overlayImageOnStatusBar();
-        clickHandlers();
-    }
-
-    private void clickHandlers() {
-        binding.tvSigninForgotPassword.setOnClickListener(v -> {
-            Toast.makeText(this, "Test Click", Toast.LENGTH_SHORT).show();
-        });
-
-        binding.tvSigninLogin.setOnClickListener(v -> {
-            Toast.makeText(this, "Test Click", Toast.LENGTH_SHORT).show();
-        });
     }
 
     private void overlayImageOnStatusBar(){
-        // Handle Keyboard Issue when on Fullscreen
-        new KeyboardUtil(this, binding.getRoot());
-
         Window window = getWindow();
         WindowManager.LayoutParams winParams = window.getAttributes();
         winParams.flags &= ~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
