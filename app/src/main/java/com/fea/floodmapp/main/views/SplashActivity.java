@@ -12,10 +12,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fea.floodmapp.databinding.ActivitySplashBinding;
+import com.fea.floodmapp.main.dependencies.MyApp;
+import com.fea.floodmapp.main.utils.SessionManager;
+
+import javax.inject.Inject;
 
 public class SplashActivity extends AppCompatActivity {
 
     ActivitySplashBinding splashBinding;
+
+    public @Inject
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,8 +30,11 @@ public class SplashActivity extends AppCompatActivity {
         splashBinding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(splashBinding.getRoot());
 
+        MyApp.getAppComponent().inject(this);
+
         goFullScreen();
         navigateToSignIn();
+        saveBaseUrlOnLocal();
     }
 
     private void goFullScreen(){
@@ -38,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
     private void navigateToSignIn() {
         // Delay 2 seconds then go to Home
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent mainActivity = new Intent(this, SignInActivity.class);
+            Intent mainActivity = new Intent(this, SigninSignupActivity .class);
             startActivity(mainActivity);
             finish();
         }, 2000);
@@ -51,5 +61,9 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(mainActivity);
             finish();
         }, 2000);
+    }
+
+    private void saveBaseUrlOnLocal() {
+        sessionManager.setBaseURL("Test URL Hehe");
     }
 }

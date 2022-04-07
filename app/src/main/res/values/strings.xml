@@ -12,4 +12,11 @@
 
     <string name="text_no_account">Don\'t have an account?</string>
     <string name="text_signup">Sign up!</string>
+    <string name="text_agreement">By proceeding you agree to Flood MApp\'s \n Terms and Conditions and acknowledge you \n have read the Privacy Policy. </string>
+
+    <!-- URLS -->
+    <string name="base_url">Sign up!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

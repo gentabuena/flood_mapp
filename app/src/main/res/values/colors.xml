@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="signin_button_blue">#2F7AA8</color>
+
+    <color name="navigation_start">#235EA0</color>
+    <color name="navigation_end">#4CBCBA</color>
+
 </resources>

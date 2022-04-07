@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.fea.floodmapp"
-        minSdk 22
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -31,13 +31,25 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'// FOR GOOGLE SIGN IN
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // DEPENDENCY INJECTION
+    implementation 'com.google.dagger:dagger-android:2.35.1'
+    implementation 'com.google.dagger:dagger-android-support:2.20' // if you use the support libraries
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.20'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.40.5'
+
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 }
