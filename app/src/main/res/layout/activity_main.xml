@@ -24,6 +24,7 @@
         app:menu="@menu/menu_main"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        app:labelVisibilityMode="unlabeled"
         />
 
 </RelativeLayout>

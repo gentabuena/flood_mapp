@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.ActivityMainBinding;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final int tabHome = R.id.tab_home;
     private final int tabProfile = R.id.tab_profile;
+
+    boolean fragmentJustInitialized = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,5 +65,13 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+
+        // Chose default fragment upon initialize
+        if (fragmentJustInitialized){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.main_fragment_container, homeFragment);
+            transaction.commit();
+            fragmentJustInitialized = false;
+        }
     }
 }

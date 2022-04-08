@@ -13,4 +13,13 @@
     <color name="navigation_start">#235EA0</color>
     <color name="navigation_end">#4CBCBA</color>
 
+    <color name="evacuation_start">#58B7C7</color>
+    <color name="evacuation_end">#5A4F8F</color>
+
+    <color name="weather_start">#E6FDF9</color>
+    <color name="weather_end">#AAFAEC</color>
+
+    <color name="safety_prec_start">#55C8E8</color>
+    <color name="safety_prec_end">#5383CA</color>
+
 </resources>
