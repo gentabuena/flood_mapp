@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     } else {
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, homeFragment).commit();
-                        Toast.makeText(MainActivity.this, "Home Tab was selected", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Home Tab was selected", Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case tabProfile:
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     } else {
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, profileFragment).commit();
-                        Toast.makeText(MainActivity.this, "Profile Tab was selected", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Profile Tab was selected", Toast.LENGTH_SHORT).show();
                     }
                     break;
             }

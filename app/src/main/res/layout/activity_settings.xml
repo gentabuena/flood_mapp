@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.views.SettingsActivity">
+
+    <ImageView
+        android:id="@+id/iv_header_status_bar_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_gradient_navigation"
+        tools:ignore="ContentDescription" />
+
+    <include
+        android:id="@+id/inc_header"
+        layout="@layout/activity_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/iv_header_status_bar_overlay"
+        android:layout_marginTop="0dp" />
+
+</RelativeLayout>

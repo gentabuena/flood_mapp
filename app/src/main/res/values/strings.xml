@@ -10,13 +10,25 @@
     <string name="text_password">Password</string>
     <string name="text_forgot_password">Forgot Password?</string>
 
+    <!-- URLS -->
+    <string name="base_url">Sign up!</string>
+
+    <!-- SIGNINUP ACTIVITY -->
     <string name="text_no_account">Don\'t have an account?</string>
     <string name="text_signup">Sign up!</string>
     <string name="text_agreement">By proceeding you agree to Flood MApp\'s \n Terms and Conditions and acknowledge you \n have read the Privacy Policy. </string>
+    <string name="text_signin_with_google">Sign in with google</string>
+    <string name="text_signup_with_google">Sign up with google</string>
 
-    <!-- URLS -->
-    <string name="base_url">Sign up!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- HOME FRAGMENT -->
+    <string name="text_safety_precautions">Safety Precautions</string>
+    <string name="text_safety_emergency_numbers">Emergency Numbers</string>
+    <string name="text_flood_preparedness">Flood Preparedness</string>
+    <string name="text_flood_preparedness_guidelines">Guidelines</string>
+    <string name="text_pagasa_updates">PAGASA Updates</string>
+
+    <!-- PROFILE FRAGMENT -->
+    <string name="text_profile">Profile</string>
+
 
 </resources>

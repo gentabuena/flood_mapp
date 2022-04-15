@@ -24,7 +24,8 @@
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            >
 
             <ImageView
                 android:id="@+id/app_logo"
@@ -47,14 +48,13 @@
 
             <ImageView
                 android:id="@+id/iv_frag_home_signout"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginEnd="0dp"
-                android:src="@drawable/sign_out"
-                app:tint="@color/signin_button_blue" />
+                android:src="@drawable/user_icon" />
 
         </RelativeLayout>
 
@@ -86,7 +86,21 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_gradient_evacuation">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/rlt_frag_home_evac_container"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/home_icon_evacuation"
+                        android:visibility="visible" />
+
                     <RelativeLayout
+                        android:id="@+id/rlt_frag_home_evac_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
@@ -135,7 +149,21 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_gradient_weather">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/rlt_frag_home_weather_container"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/homepage_icon_weather_rev"
+                        android:visibility="visible" />
+
                     <RelativeLayout
+                        android:id="@+id/rlt_frag_home_weather_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
@@ -171,34 +199,185 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                android:orientation="horizontal"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
                 android:layout_weight="1"
                 >
 
-                <RelativeLayout
+                <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_gradient_safety_precautions">
+                    android:scrollIndicators="none"
+                    android:scrollbars="none"
+                    >
 
-                    <TextView
-                        android:id="@+id/tv_frag_home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Safety Precautions"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingStart="20dp"
+                        android:paddingTop="30dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="30dp">
 
-                </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradient_safety_precautions"
+                            android:visibility="visible"
+                            >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@+id/tv_frag_home"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:scaleType="fitStart"
+                                android:src="@drawable/homepage_icon_safetyprec"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_frag_home"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:text="@string/text_safety_precautions"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_gradient_safety_precautions"
+                            android:visibility="visible"
+                            >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@+id/tv_frag_emergency"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:scaleType="fitStart"
+                                android:src="@drawable/homepage_icon_emergency"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_frag_emergency"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:text="@string/text_safety_emergency_numbers"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_gradient_safety_precautions">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@+id/tv_frag_flood"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:scaleType="fitStart"
+                                android:src="@drawable/homepage_icon_preparedness"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_frag_flood"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:text="@string/text_flood_preparedness"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/tv_frag_guidelines"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_frag_flood"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:text="@string/text_flood_preparedness_guidelines"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_gradient_safety_precautions">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@+id/tv_frag_pagasa_updates"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:scaleType="fitStart"
+                                android:src="@drawable/homepage_icon_pagasa"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_frag_pagasa_updates"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:text="@string/text_pagasa_updates"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
 
             </RelativeLayout>
 
         </LinearLayout>
 
     </RelativeLayout>
+
 </FrameLayout>
