@@ -6,17 +6,26 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.FragmentProfileBinding;
 import com.fea.floodmapp.main.views.MainActivity;
 import com.fea.floodmapp.main.views.SettingsActivity;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.Wrapper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +35,7 @@ import com.fea.floodmapp.main.views.SettingsActivity;
 public class ProfileFragment extends Fragment {
 
     FragmentProfileBinding fragmentProfileBinding;
+    SlidingUpPanelLayout settingsSlider;
 
     Context context;
     // TODO: Rename parameter arguments, choose names that match
@@ -82,13 +92,48 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initializeViews(){
-        fragmentProfileBinding.ivFragProfileSettings.setOnClickListener(view -> {
-            goToSettings();
-        });
+        fragmentProfileBinding.ivFragProfileSettings.setOnClickListener(this::showPopup);
     }
 
     private void goToSettings(){
         Intent settingsActivity = new Intent(context, SettingsActivity.class);
         startActivity(settingsActivity);
     }
+
+    private void showPopup(View v){
+        ContextThemeWrapper wrapper= new ContextThemeWrapper(context, R.style.BasePopupMenu);
+        PopupMenu popupMenu = new PopupMenu(wrapper, v, Gravity.END);
+
+        /* try {
+            Field[] fields = popupMenu.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                if ("mPopup".equals(field.getName())) {
+                    field.setAccessible(true);
+                    Object menuPopupHelper = field.get(popupMenu);
+                    Class<?> classPopupHelper = Class.forName(menuPopupHelper.getClass().getName());
+                    Method setForceIcons = classPopupHelper.getMethod("setForceShowIcon", boolean.class);
+                    setForceIcons.invoke(menuPopupHelper, true);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        } */
+
+        popupMenu.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.menu_settings:
+                    goToSettings();
+                    break;
+                case R.id.menu_edit_profile:
+                    Toast.makeText(context, "Edit daw hehez", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return false;
+        });
+        popupMenu.inflate(R.menu.menu_profile);
+        popupMenu.show();
+    }
+
 }

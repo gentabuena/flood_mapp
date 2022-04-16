@@ -27,4 +27,13 @@
     <style name="Theme.FloodMApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.FloodMApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="BasePopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="iconSize"> @dimen/margin_small </item>
+        <item name="android:textSize">@dimen/text_large</item>z
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
 </resources>

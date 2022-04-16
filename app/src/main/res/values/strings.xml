@@ -10,6 +10,11 @@
     <string name="text_password">Password</string>
     <string name="text_forgot_password">Forgot Password?</string>
 
+    <string name="text_home">Home</string>
+
+    <!-- STATICS -->
+    <string name="text_juan">Juan Dela Cruz</string>
+
     <!-- URLS -->
     <string name="base_url">Sign up!</string>
 
@@ -29,6 +34,9 @@
 
     <!-- PROFILE FRAGMENT -->
     <string name="text_profile">Profile</string>
-
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_settings">Settings</string>
+    <string name="text_save">Save</string>
+    <string name="text_sign_out">Sign Out</string>
 
 </resources>

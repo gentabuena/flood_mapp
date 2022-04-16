@@ -1,3 +1,47 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- text size -->
+    <dimen name="text_small">10sp</dimen>
+    <dimen name="text_medium">12sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_15">15sp</dimen>
+    <dimen name="text_large">16sp</dimen>
+    <dimen name="text_xlarge">18sp</dimen>
+    <dimen name="text_xxlarge">20sp</dimen>
+    <dimen name="text_huge">25sp</dimen>
+    <dimen name="midi">16dp</dimen>
+
+
+    <dimen name="thumb_width">22dp</dimen>
+    <dimen name="thumb_height">22dp</dimen>
+
+    <dimen name="rippleStrokeWidth">2dp</dimen>
+    <dimen name="radius_corners">5dp</dimen>
+
+    <dimen name="header">56dp</dimen>
+
+
+    <dimen name="margin_xxlarge">50dp</dimen>
+    <dimen name="margin_xmedium_large">35dp</dimen>
+    <dimen name="margin_xlarge">30dp</dimen>
+    <dimen name="margin_large">25dp</dimen>
+    <dimen name="margin_normal">20dp</dimen>
+    <dimen name="margin_medium_small">18dp</dimen>
+    <dimen name="margin_small">15dp</dimen>
+    <dimen name="margin_xsmall">10dp</dimen>
+    <dimen name="margin_xxsmall">5dp</dimen>
+
+    <dimen name="height_normal">50dp</dimen>
+
+    <dimen name="image_height_medium">60dp</dimen>
+
+    <dimen name="layout_height_medium">80dp</dimen>
+
+    <dimen name="view_height_small">1dp</dimen>
+
+    <dimen name="activityPadding">16dp</dimen>
+    <dimen name="placeholderImage">60dp</dimen>
+    <dimen name="placeholderTextHeight">8dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
 </resources>
