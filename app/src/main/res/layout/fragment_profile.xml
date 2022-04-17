@@ -86,6 +86,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/et_frag_profile_email"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_blue_textview_rounded"
@@ -123,6 +124,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/et_frag_profile_name"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_blue_textview_rounded"
@@ -167,6 +169,7 @@
                             />
 
                         <EditText
+                            android:id="@+id/et_frag_profile_age"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@drawable/bg_blue_textview_rounded"
@@ -209,6 +212,7 @@
                             />
 
                         <EditText
+                            android:id="@+id/et_frag_profile_gender"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@drawable/bg_blue_textview_rounded"
@@ -248,6 +252,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/et_frag_profile_contact"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_blue_textview_rounded"
@@ -284,6 +289,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/et_frag_profile_address"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_blue_textview_rounded"
@@ -322,7 +328,7 @@
                         android:textSize="18sp"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:background="@drawable/bg_rounded_signin_blue"
+                        android:background="@drawable/bg_rounded_blue"
                         />
 
                 </LinearLayout>

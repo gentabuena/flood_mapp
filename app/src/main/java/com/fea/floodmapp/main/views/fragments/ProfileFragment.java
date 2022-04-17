@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +21,11 @@ import android.widget.Toast;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.FragmentProfileBinding;
-import com.fea.floodmapp.main.views.MainActivity;
+import com.fea.floodmapp.main.utils.SessionManager;
 import com.fea.floodmapp.main.views.SettingsActivity;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.sql.Wrapper;
+import javax.inject.Inject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +36,13 @@ public class ProfileFragment extends Fragment {
 
     FragmentProfileBinding fragmentProfileBinding;
     SlidingUpPanelLayout settingsSlider;
+    boolean profileOnEdit = false;
+
+    private final int popupSettings = R.id.menu_settings;
+    private final int popupEditProfile = R.id.menu_edit_profile;
+
+    @Inject
+    SessionManager sessionManager;
 
     Context context;
     // TODO: Rename parameter arguments, choose names that match
@@ -76,6 +83,7 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         context = getActivity();
     }
 
@@ -123,17 +131,49 @@ public class ProfileFragment extends Fragment {
 
         popupMenu.setOnMenuItemClickListener(menuItem -> {
             switch (menuItem.getItemId()){
-                case R.id.menu_settings:
+                case popupSettings:
                     goToSettings();
                     break;
-                case R.id.menu_edit_profile:
-                    Toast.makeText(context, "Edit daw hehez", Toast.LENGTH_SHORT).show();
+                case popupEditProfile:
+                    if (profileOnEdit) {
+                        disableViewsForEdit();
+                    } else {
+                        enableViewsForEdit();
+                    }
                     break;
             }
             return false;
         });
         popupMenu.inflate(R.menu.menu_profile);
+
+        MenuItem item = popupMenu.getMenu().findItem(R.id.menu_edit_profile);
+        if (profileOnEdit) item.setTitle("Cancel Edit Profile");
+        else item.setTitle("Edit Profile");
+
         popupMenu.show();
     }
 
+    private void enableViewsForEdit(){
+        profileOnEdit = true;
+        Toast.makeText(context, "Editing privilege granted!", Toast.LENGTH_SHORT).show();
+
+        fragmentProfileBinding.etFragProfileName.setEnabled(true);
+        fragmentProfileBinding.etFragProfileAddress.setEnabled(true);
+        fragmentProfileBinding.etFragProfileContact.setEnabled(true);
+        fragmentProfileBinding.etFragProfileAge.setEnabled(true);
+        fragmentProfileBinding.etFragProfileGender.setEnabled(true);
+        fragmentProfileBinding.lltFragProfileSave.setVisibility(View.VISIBLE);
+    }
+
+    public void disableViewsForEdit(){
+        profileOnEdit = false;
+        Toast.makeText(context, "Editing privilege revoked!", Toast.LENGTH_SHORT).show();
+
+        fragmentProfileBinding.etFragProfileName.setEnabled(false);
+        fragmentProfileBinding.etFragProfileAddress.setEnabled(false);
+        fragmentProfileBinding.etFragProfileContact.setEnabled(false);
+        fragmentProfileBinding.etFragProfileAge.setEnabled(false);
+        fragmentProfileBinding.etFragProfileGender.setEnabled(false);
+        fragmentProfileBinding.lltFragProfileSave.setVisibility(View.GONE);
+    }
 }

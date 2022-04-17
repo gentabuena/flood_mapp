@@ -13,7 +13,6 @@
         android:title="@string/text_edit_profile"
         app:itemIconSize="2dp"
         app:fontFamily="@font/montserrat_regular"
-
         />
 
 </menu>

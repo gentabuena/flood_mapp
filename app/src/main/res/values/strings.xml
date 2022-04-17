@@ -34,6 +34,7 @@
 
     <!-- PROFILE FRAGMENT -->
     <string name="text_profile">Profile</string>
+    <string name="text_cancel_edit_profile">Cancel Edit</string>
     <string name="text_edit_profile">Edit Profile</string>
     <string name="text_settings">Settings</string>
     <string name="text_save">Save</string>
