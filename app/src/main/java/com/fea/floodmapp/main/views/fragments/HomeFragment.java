@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.FragmentHomeBinding;
+import com.fea.floodmapp.main.dependencies.MyApp;
 import com.fea.floodmapp.main.utils.SessionManager;
 import com.fea.floodmapp.main.views.EmergencyNumbersActivity;
 import com.fea.floodmapp.main.views.SigninSignupActivity;
