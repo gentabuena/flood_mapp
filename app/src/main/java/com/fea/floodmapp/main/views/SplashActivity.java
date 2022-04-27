@@ -64,6 +64,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void saveBaseUrlOnLocal() {
-        sessionManager.setBaseURL("Test URL Hehe");
+        sessionManager.setBaseURL("Test URL Haha");
     }
 }
