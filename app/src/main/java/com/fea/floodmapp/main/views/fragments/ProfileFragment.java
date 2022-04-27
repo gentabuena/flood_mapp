@@ -6,17 +6,26 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.FragmentProfileBinding;
-import com.fea.floodmapp.main.views.MainActivity;
+import com.fea.floodmapp.main.utils.SessionManager;
 import com.fea.floodmapp.main.views.SettingsActivity;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+import javax.inject.Inject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +35,14 @@ import com.fea.floodmapp.main.views.SettingsActivity;
 public class ProfileFragment extends Fragment {
 
     FragmentProfileBinding fragmentProfileBinding;
+    SlidingUpPanelLayout settingsSlider;
+    boolean profileOnEdit = false;
+
+    private final int popupSettings = R.id.menu_settings;
+    private final int popupEditProfile = R.id.menu_edit_profile;
+
+    @Inject
+    SessionManager sessionManager;
 
     Context context;
     // TODO: Rename parameter arguments, choose names that match
@@ -66,6 +83,7 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         context = getActivity();
     }
 
@@ -82,13 +100,80 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initializeViews(){
-        fragmentProfileBinding.ivFragProfileSettings.setOnClickListener(view -> {
-            goToSettings();
-        });
+        fragmentProfileBinding.ivFragProfileSettings.setOnClickListener(this::showPopup);
     }
 
     private void goToSettings(){
         Intent settingsActivity = new Intent(context, SettingsActivity.class);
         startActivity(settingsActivity);
+    }
+
+    private void showPopup(View v){
+        ContextThemeWrapper wrapper= new ContextThemeWrapper(context, R.style.BasePopupMenu);
+        PopupMenu popupMenu = new PopupMenu(wrapper, v, Gravity.END);
+
+        /* try {
+            Field[] fields = popupMenu.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                if ("mPopup".equals(field.getName())) {
+                    field.setAccessible(true);
+                    Object menuPopupHelper = field.get(popupMenu);
+                    Class<?> classPopupHelper = Class.forName(menuPopupHelper.getClass().getName());
+                    Method setForceIcons = classPopupHelper.getMethod("setForceShowIcon", boolean.class);
+                    setForceIcons.invoke(menuPopupHelper, true);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        } */
+
+        popupMenu.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case popupSettings:
+                    goToSettings();
+                    break;
+                case popupEditProfile:
+                    if (profileOnEdit) {
+                        disableViewsForEdit();
+                    } else {
+                        enableViewsForEdit();
+                    }
+                    break;
+            }
+            return false;
+        });
+        popupMenu.inflate(R.menu.menu_profile);
+
+        MenuItem item = popupMenu.getMenu().findItem(R.id.menu_edit_profile);
+        if (profileOnEdit) item.setTitle("Cancel Edit Profile");
+        else item.setTitle("Edit Profile");
+
+        popupMenu.show();
+    }
+
+    private void enableViewsForEdit(){
+        profileOnEdit = true;
+        Toast.makeText(context, "Editing privilege granted!", Toast.LENGTH_SHORT).show();
+
+        fragmentProfileBinding.etFragProfileName.setEnabled(true);
+        fragmentProfileBinding.etFragProfileAddress.setEnabled(true);
+        fragmentProfileBinding.etFragProfileContact.setEnabled(true);
+        fragmentProfileBinding.etFragProfileAge.setEnabled(true);
+        fragmentProfileBinding.etFragProfileGender.setEnabled(true);
+        fragmentProfileBinding.lltFragProfileSave.setVisibility(View.VISIBLE);
+    }
+
+    public void disableViewsForEdit(){
+        profileOnEdit = false;
+        Toast.makeText(context, "Editing privilege revoked!", Toast.LENGTH_SHORT).show();
+
+        fragmentProfileBinding.etFragProfileName.setEnabled(false);
+        fragmentProfileBinding.etFragProfileAddress.setEnabled(false);
+        fragmentProfileBinding.etFragProfileContact.setEnabled(false);
+        fragmentProfileBinding.etFragProfileAge.setEnabled(false);
+        fragmentProfileBinding.etFragProfileGender.setEnabled(false);
+        fragmentProfileBinding.lltFragProfileSave.setVisibility(View.GONE);
     }
 }

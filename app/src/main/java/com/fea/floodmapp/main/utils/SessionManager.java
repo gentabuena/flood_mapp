@@ -28,4 +28,24 @@ public class SessionManager {
     public void setBaseURL(String baseUrl) {
         sharedPreferences.edit().putString("base_url", baseUrl).apply();
     }
+
+    public boolean getIsProfileEditing() {
+        return sharedPreferences.getBoolean("isProfileEditing", false);
+    }
+
+    public void setIsProfileEditing(boolean isProfileEditing) {
+        sharedPreferences.edit().putBoolean("isProfileEditing", isProfileEditing).apply();
+    }
+
+    public int getIsProfileEditingv2() {
+        return sharedPreferences.getInt("isProfileEditingv2", 0);
+    }
+
+    public void setIsProfileEditingv2(int isProfileEditingv2) {
+        sharedPreferences.edit().putInt("isProfileEditingv2", isProfileEditingv2).apply();
+    }
+
+    public void clearCache(){
+        sharedPreferences.edit().clear().apply();
+    }
 }

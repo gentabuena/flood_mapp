@@ -15,10 +15,13 @@ import androidx.fragment.app.FragmentTransaction;
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.ActivityMainBinding;
 import com.fea.floodmapp.main.utils.KeyboardUtil;
+import com.fea.floodmapp.main.utils.SessionManager;
 import com.fea.floodmapp.main.views.fragments.HomeFragment;
 import com.fea.floodmapp.main.views.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
     private final int tabProfile = R.id.tab_profile;
 
     boolean fragmentJustInitialized = true;
+
+    HomeFragment homeFragment;
+    ProfileFragment profileFragment;
+
+    @Inject
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBottomNavigationView() {
-        HomeFragment homeFragment = new HomeFragment();
-        ProfileFragment profileFragment = new ProfileFragment();
+        homeFragment = new HomeFragment();
+        profileFragment = new ProfileFragment();
 
         activityMainBinding.mainNavigation.setOnItemSelectedListener(item -> {
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_fragment_container);
@@ -58,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     if (currentFragment instanceof ProfileFragment) {
                         return false;
                     } else {
+                        //if (sessionManager.getIsProfileEditing()) discardChanges();
+                        //else getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, profileFragment).commit();
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, profileFragment).commit();
                         //Toast.makeText(MainActivity.this, "Profile Tab was selected", Toast.LENGTH_SHORT).show();
                     }
@@ -73,5 +84,10 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
             fragmentJustInitialized = false;
         }
+    }
+
+    private void discardChanges(){
+        Toast.makeText(this, "Discard Changes?", Toast.LENGTH_SHORT).show();
+        profileFragment.disableViewsForEdit();
     }
 }

@@ -12,15 +12,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.fea.floodmapp.databinding.ActivitySigninSignupBinding;
 import com.fea.floodmapp.main.dependencies.MyApp;
 import com.fea.floodmapp.main.utils.KeyboardUtil;
+import com.fea.floodmapp.main.utils.SessionManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
+import javax.inject.Inject;
 
 public class SigninSignupActivity extends AppCompatActivity {
 
     ActivitySigninSignupBinding activitySigninSignupBinding;
     private GoogleSignInClient googleSignInClient;
     static String TAG = "SignInActivity";
+
+    @Inject
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,7 @@ public class SigninSignupActivity extends AppCompatActivity {
         MyApp.getAppComponent().inject(this);
         overlayImageOnStatusBar();
         clickHandlers();
+        setBaseURL();
     }
 
     private void overlayImageOnStatusBar(){
@@ -45,14 +52,21 @@ public class SigninSignupActivity extends AppCompatActivity {
     }
 
     private void clickHandlers() {
-        activitySigninSignupBinding.rltSigninupLogin.setOnClickListener(v -> {
-            Intent mainActivity = new Intent(this, MainActivity .class);
-            startActivity(mainActivity);
-            finish();
-        });
+        activitySigninSignupBinding.rltSigninupLogin.setOnClickListener(v -> openFeaHomeScreen());
 
         activitySigninSignupBinding.rltSigninupRegister.setOnClickListener(v -> {
             Toast.makeText(this, "Sign up was Clicked", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void openFeaHomeScreen(){
+        sessionManager.setToken("asdfghjklqwevsdgwbfvdzcxcsdxada");
+        Intent mainActivity = new Intent(this, MainActivity .class);
+        startActivity(mainActivity);
+        finish();
+    }
+
+    private void setBaseURL(){
+        sessionManager.setBaseURL("Heheh");
     }
 }

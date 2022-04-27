@@ -23,5 +23,7 @@
     <color name="safety_prec_end">#5383CA</color>
 
     <color name="blue_rounded_tv">#CDE4EB</color>
+    <color name="gray_line">#CACACA</color>
+
 
 </resources>
