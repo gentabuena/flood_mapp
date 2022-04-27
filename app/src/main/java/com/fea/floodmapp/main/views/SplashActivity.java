@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,8 +34,8 @@ public class SplashActivity extends AppCompatActivity {
         MyApp.getAppComponent().inject(this);
 
         goFullScreen();
-        navigateToSignIn();
         saveBaseUrlOnLocal();
+        navigateTo();
     }
 
     private void goFullScreen(){
@@ -43,6 +44,11 @@ public class SplashActivity extends AppCompatActivity {
         winParams.flags &= ~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
         window.setAttributes(winParams);
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
+
+    private void navigateTo(){
+        if (TextUtils.isEmpty(sessionManager.getToken())) navigateToSignIn();
+        else navigateToHome();
     }
 
     private void navigateToSignIn() {

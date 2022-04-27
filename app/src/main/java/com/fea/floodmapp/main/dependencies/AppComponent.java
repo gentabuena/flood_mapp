@@ -5,6 +5,8 @@ import com.fea.floodmapp.main.views.MainActivity;
 import com.fea.floodmapp.main.views.SignInActivity;
 import com.fea.floodmapp.main.views.SigninSignupActivity;
 import com.fea.floodmapp.main.views.SplashActivity;
+import com.fea.floodmapp.main.views.fragments.HomeFragment;
+import com.fea.floodmapp.main.views.fragments.ProfileFragment;
 
 import javax.inject.Singleton;
 
@@ -22,4 +24,8 @@ public interface AppComponent {
 
     // Utilities
     void inject(SessionManager sessionManager);
+
+    // Fragments
+    void inject(HomeFragment homeFragment);
+    void inject(ProfileFragment profileFragment);
 }

@@ -83,6 +83,7 @@
                 >
 
                 <RelativeLayout
+                    android:id="@+id/rlt_frag_home_evacuation_sites"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_gradient_evacuation">
@@ -146,6 +147,7 @@
                 >
 
                 <RelativeLayout
+                    android:id="@+id/rlt_frag_home_weather_forecast"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_gradient_weather">
@@ -220,6 +222,7 @@
                         android:paddingBottom="30dp">
 
                         <RelativeLayout
+                            android:id="@+id/rlt_frag_home_safety_precautions"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_gradient_safety_precautions"
@@ -254,6 +257,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
+                            android:id="@+id/rlt_frag_home_emergency_numbers"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="10dp"
@@ -289,6 +293,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
+                            android:id="@+id/rlt_frag_home_flood_preparedness"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="10dp"
@@ -338,6 +343,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
+                            android:id="@+id/rlt_frag_home_pagasa_updates"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="10dp"

@@ -40,4 +40,25 @@
     <string name="text_save">Save</string>
     <string name="text_sign_out">Sign Out</string>
 
+    <!-- EMERGENCY NUMBERS -->
+    <string name="text_emergency_numbers">Emergency Numbers</string>
+    <string name="text_hotlines">Hotlines</string>
+    <string name="text_emergency_dial">Emergency Dial</string>
+    <string name="text_pnp">PNP - Philippine National Police</string>
+    <string name="text_rescue">Rescue 1024 - Calumpit</string>
+    <string name="text_bfp">BFP - Bureau of Fire Protection</string>
+
+    <string name="text_911">• 911</string>
+    <string name="text_0933">• 0933–197–8736</string>
+    <string name="text_044_815">• (044)–815–2982</string>
+    <string name="text_0923">• 0923–401–4305</string>
+    <string name="text_044_913">• (044)–913–7295</string>
+    <string name="text_0916">• 0916–390–3931</string>
+    <string name="text_0925">• 0925–522–5237</string>
+    <string name="text_044_9137">• (044)–913–7289</string>
+    <string name="text_044_3205">• (044)–320–5605</string>
+    <string name="text_044_3200">• (044)–320–0305</string>
+
+
+
 </resources>
