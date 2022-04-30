@@ -38,7 +38,6 @@
         <activity
             android:name=".main.views.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.FloodMApp.NoActionBar" />
         <activity
             android:name=".main.views.SettingsActivity"
@@ -47,7 +46,19 @@
         <activity
             android:name=".main.views.EmergencyNumbersActivity"
             android:exported="false"
-            android:theme="@style/Theme.FloodMApp.NoActionBar"/>
+            android:theme="@style/Theme.FloodMApp.NoActionBar" />
+        <activity
+            android:name=".main.views.FloodPreparednessGuideActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FloodMApp.NoActionBar" />
+        <activity
+            android:name=".main.views.GuidelineActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FloodMApp.NoActionBar" />
+        <activity
+            android:name=".main.views.PagasaUpdatesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FloodMApp.NoActionBar" />
     </application>
 
 </manifest>

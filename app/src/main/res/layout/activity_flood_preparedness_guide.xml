@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.views.FloodPreparednessGuideActivity">
+
+    <ImageView
+        android:id="@+id/iv_header_status_bar_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_gradient_navigation"
+        tools:ignore="ContentDescription" />
+
+    <include
+        android:id="@+id/inc_header"
+        layout="@layout/activity_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/iv_header_status_bar_overlay"
+        android:layout_marginTop="0dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/inc_header"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:outlineProvider="bounds"
+                android:elevation="4dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_large"
+                        android:layout_below="@+id/llt_general_particular_contain"
+                        android:layout_marginTop="-20dp"
+                        android:src="@drawable/bg_gray_guideline_bottom_rounded" />
+
+                    <LinearLayout
+                        android:id="@+id/llt_general_particular_contain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_blue_guideline_bottom_rounded"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tv_flood_general"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".49"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="@string/text_general"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_xlarge" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".01"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_flood_particular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".49"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="@string/text_particular"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_xlarge" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_flood_gl_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/llt_general_particular_contain"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/map_guide_lq" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/llt_upper_flood_reminder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="horizontal"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5">
+
+                            <ImageView
+                                android:id="@+id/iv_flood_square_blue"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@color/flood_very_high_blue" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_blue_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/iv_flood_square_blue"
+                                android:layout_alignBottom="@+id/iv_flood_square_blue"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:layout_toEndOf="@+id/iv_flood_square_blue"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center_vertical"
+                                android:text="@string/text_flood_susceptibility_veryhigh"
+                                android:textSize="@dimen/text_small" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_blue_under_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_flood_blue_text"
+                                android:layout_alignStart="@+id/tv_flood_blue_text"
+                                android:layout_alignEnd="@+id/tv_flood_blue_text"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="@string/text_very_high_flood"
+                                android:textSize="@dimen/text_small" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5">
+
+                            <ImageView
+                                android:id="@+id/iv_flood_square_violet"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@color/flood_moderate_high_purple" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_violet_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/iv_flood_square_violet"
+                                android:layout_alignBottom="@+id/iv_flood_square_violet"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:layout_toEndOf="@+id/iv_flood_square_violet"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center_vertical"
+                                android:text="@string/text_flood_susceptibility_moderate"
+                                android:textSize="@dimen/text_small" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_violet_under_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_flood_violet_text"
+                                android:layout_alignStart="@+id/tv_flood_violet_text"
+                                android:layout_alignEnd="@+id/tv_flood_violet_text"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="@string/text_moderate_high_flood"
+                                android:textSize="@dimen/text_small" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/llt_upper_flood_reminder"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:paddingBottom="15dp"
+                            >
+
+                            <ImageView
+                                android:id="@+id/iv_flood_square_indigo"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@color/flood_high_indigo" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_indigo_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/iv_flood_square_indigo"
+                                android:layout_alignBottom="@+id/iv_flood_square_indigo"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:layout_toEndOf="@+id/iv_flood_square_indigo"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center_vertical"
+                                android:text="@string/text_flood_susceptibility_high"
+                                android:textSize="@dimen/text_small" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_indigo_under_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_flood_indigo_text"
+                                android:layout_alignStart="@+id/tv_flood_indigo_text"
+                                android:layout_alignEnd="@+id/tv_flood_indigo_text"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="@string/text_very_high_flood"
+                                android:textSize="@dimen/text_small" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:paddingBottom="15dp"
+                            >
+
+                            <ImageView
+                                android:id="@+id/iv_flood_square_pink"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="10dp"
+
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@color/flood_high_pink" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_pink_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/iv_flood_square_pink"
+                                android:layout_alignBottom="@+id/iv_flood_square_pink"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:layout_toEndOf="@+id/iv_flood_square_pink"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:gravity="center_vertical"
+                                android:text="@string/text_flood_susceptibility_low"
+                                android:textSize="@dimen/text_small" />
+
+                            <TextView
+                                android:id="@+id/tv_flood_pink_under_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_flood_pink_text"
+                                android:layout_alignStart="@+id/tv_flood_pink_text"
+                                android:layout_alignEnd="@+id/tv_flood_pink_text"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="@string/text_low_flood"
+                                android:textSize="@dimen/text_small" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

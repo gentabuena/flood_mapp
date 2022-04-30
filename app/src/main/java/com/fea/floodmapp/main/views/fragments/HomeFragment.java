@@ -21,6 +21,8 @@ import com.fea.floodmapp.databinding.FragmentHomeBinding;
 import com.fea.floodmapp.main.dependencies.MyApp;
 import com.fea.floodmapp.main.utils.SessionManager;
 import com.fea.floodmapp.main.views.EmergencyNumbersActivity;
+import com.fea.floodmapp.main.views.FloodPreparednessGuideActivity;
+import com.fea.floodmapp.main.views.PagasaUpdatesActivity;
 import com.fea.floodmapp.main.views.SigninSignupActivity;
 
 import javax.inject.Inject;
@@ -98,8 +100,8 @@ public class HomeFragment extends Fragment {
         fragmentHomeBinding.rltFragHomeWeatherForecast.setOnClickListener(v -> toastMessage());
         fragmentHomeBinding.rltFragHomeSafetyPrecautions.setOnClickListener(v -> toastMessage());
         fragmentHomeBinding.rltFragHomeEmergencyNumbers.setOnClickListener(v -> gotoEmergencyNumbers());
-        fragmentHomeBinding.rltFragHomeFloodPreparedness.setOnClickListener(v -> toastMessage());
-        fragmentHomeBinding.rltFragHomePagasaUpdates.setOnClickListener(v -> toastMessage());
+        fragmentHomeBinding.rltFragHomeFloodPreparedness.setOnClickListener(v -> gotoGuideLines());
+        fragmentHomeBinding.rltFragHomePagasaUpdates.setOnClickListener(v -> gotoPagasaUpdates());
         fragmentHomeBinding.ivFragHomeSignout.setOnClickListener(v -> signOutAccount());
     }
 
@@ -116,8 +118,17 @@ public class HomeFragment extends Fragment {
     }
 
     private void gotoEmergencyNumbers(){
-        Log.d(TAG, "Sign out account method");
         Intent intent = new Intent(context, EmergencyNumbersActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoGuideLines(){
+        Intent intent = new Intent(context, FloodPreparednessGuideActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoPagasaUpdates(){
+        Intent intent = new Intent(context, PagasaUpdatesActivity.class);
         startActivity(intent);
     }
 }

@@ -25,5 +25,16 @@
     <color name="blue_rounded_tv">#CDE4EB</color>
     <color name="gray_line">#CACACA</color>
 
+    <color name="dark_gray">#BFBFBF</color>
+
+    <!-- FLOOD PREPAREDNESS GUIDLINES -->
+    <color name="flood_very_high_blue">#071194</color>
+    <color name="flood_moderate_high_purple">#B166E7</color>
+    <color name="flood_high_indigo">#7233E6</color>
+    <color name="flood_high_pink">#E0CCDA</color>
+
+    <color name="warning_level_3">#FF0202</color>
+    <color name="warning_level_2">#FF5F1A</color>
+    <color name="warning_level_1">#FAFF1A</color>
 
 </resources>

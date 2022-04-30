@@ -59,6 +59,126 @@
     <string name="text_044_3205">• (044)–320–5605</string>
     <string name="text_044_3200">• (044)–320–0305</string>
 
+    <!-- FLOOD PREP GUIDELINES -->
+    <string name="text_flood_prep_guide">Flood Preparation Guidelines</string>
+    <string name="text_general">General</string>
+    <string name="text_particular">Particular</string>
+    <string name="text_general_gl">General Guidelines</string>
+    <string name="text_particular_gl">Particular Guidelines</string>
 
+    <string name="text_warning_system">Community Early Warning System</string>
+
+    <string name="text_flood_susceptibility_veryhigh">Very high flood susceptibility</string>
+    <string name="text_flood_susceptibility_high">High flood susceptibility</string>
+    <string name="text_flood_susceptibility_moderate">Moderate flood susceptibility</string>
+    <string name="text_flood_susceptibility_low">Low flood susceptibility</string>
+
+    <string name="text_flood_title_basic_steps">Basic Steps to prepare \n for the storm</string>
+    <string name="text_flood_title_step_2">IF YOUR AREA IS UNDER A FLOOD \n WATCH OR WARNING</string>
+    <string name="text_flood_title_step_3">EMERGENCY SUPPLIES YOU \n WILL NEED</string>
+    <string name="text_flood_title_step_4">PREPARING TO \n EVACUATE</string>
+    <string name="text_flood_title_step_5">IF YOU ARE ORDERED \n TO EVACUATE</string>
+    <string name="text_flood_title_step_6">IF YOU ARE ORDERED NOT \n TO EVACUATE</string>
+
+    <string name="text_very_high_flood">
+        Areas likely to experience flood heights of greater than 2 meters and/or flood duration of more than 3 days. These areas are immediately flooded during heavy rains of several hours; include landforms of topographic lows such as active river channels, abandoned river channels and areas along river banks; also prone to flash floods.
+    </string>
+
+    <string name="text_moderate_high_flood">
+        Areas likely to experience flood heights of greater than 0.5m up to 1 meter and/or flood duration of 1 to 3 days. These areas are subject to widespread inundation during prolonged and extensive heavy rainfall or extreme weather conditions. Fluvial terraces, alluvial fans, and infilled valleys are areas moderately subjected to flooding.
+    </string>
+
+    <string name="text_high_flood">
+       Areas likely to experience flood heights of greater than 1 up to 2 meters and/or flood duration of more than 3 days. These areas are immediately flooded during heavy rains of several hours; include landforms of topographic lows such as active river channels, abandoned river channels and areas along river banks; also prone to flash floods.
+    </string>
+
+    <string name="text_low_flood">
+       Areas likely to experience flood heights of 0.5 meter or less and/or flood duration of less than 1 day. These areas include low hills and gentle slopes. They also have sparse to moderate drainage density.
+    </string>
+
+    <string name="text_basic_steps">
+        • Learn about your community\'s emergency plans, warning signals, evacuation routes, and locations of emergency shelters. \n \n
+        • Plan and practice a flood evacuation route with your family. Ask an out-of-state relative or friend to be the "family contact" in case your family is separated during a flood. Make sure everyone in your family knows the name, address, and phone number of this contact person. \n \n
+        • Post emergency phone numbers on every phone. \n \n
+        • Inform local authorities about any special needs, i.e., elderly or bedridden people, or anyone with a disability. \n \n
+        • Identify potential home hazards and know how to secure or protect them before the flood strikes. Be prepared to turn off electrical power when there is standing water, fallen power lines, or before you evacuate. Turn off gas and water supplies before you evacuate. Secure structurally unstable building materials. \n \n
+    </string>
+
+    <string name="text_step_2">
+        • Gather the emergency supplies you previously stocked in your home and stay tuned to local radio or television stations for updates. \n \n
+        • Turn off all utilities at the main power switch and close the main gas valve if evacuation appears necessary. \n \n
+        • Have your immunization records handy or be aware of your last tetanus shot, in case you should receive a puncture wound or a wound becomes contaminated during or after the flood. \n \n
+        • Bring outdoor possessions, such as lawn furniture, grills and trash cans inside or tie them down securely \n \n
+    </string>
+
+    <string name="text_step_3">
+        You should stock your home with supplies that may be needed during the emergency period. At a minimum, these supplies should include: \n \n
+            • Several clean containers for water, large enough for a 3–5-day supply of water (about five gallons for each person). \n \n
+            • A 3–5-day supply of non-perishable food and a non-electric can opener. \n \n
+            • A first aid kit and manual and prescription medicines and special medical needs. \n \n
+            • A battery-powered radio, flashlights, and extra batteries. \n \n
+            • Sleeping bags or extra blankets. \n \n
+            • Water-purifying supplies, such as chlorine or iodine tablets or unscented, ordinary household chlorine bleach. \n \n
+            • Baby food and/or prepared formula, diapers, and other baby supplies. \n \n
+            • Disposable cleaning cloths, such as "baby wipes" for the whole family to use in case bathing facilities are not available. \n \n
+            • Personal hygiene supplies, such as soap, toothpaste, sanitary napkins, etc. \n \n
+            • An emergency kit for your car with food, flares, booster cables, maps, tools, a first aid kit, fire extinguisher, sleeping bags, etc. \n \n
+            • Rubber boots, sturdy shoes, and waterproof gloves. \n \n
+    </string>
+
+    <string name="text_step_4">
+        • Expect the need to evacuate and prepare for it. When a flood watch is issued, you should: \n \n
+        • Fill your vehicle’s gas tank and make sure the emergency kit for your car is ready. \n \n
+        • If no vehicle is available, make arrangements with friends or family for transportation. \n \n
+        • Identify essential documents such as medical records, insurance cards along with ID cards and put in waterproof material to carry with you during evacuation. \n \n
+        • Fill your clean water containers. \n \n
+        • Review your emergency plans and supplies, checking to see if any items are missing. \n \n
+        • Tune in the radio or television for weather updates. \n \n
+        • Listen for disaster sirens and warning signals. \n \n
+        • Put livestock and family pets in a safe area. Due to food and sanitation requirements, emergency shelters cannot accept animals. \n \n
+        • Adjust the thermostat on refrigerators and freezers to the coldest possible temperature. \n \n
+    </string>
+
+    <string name="text_step_5">
+        You should never ignore an evacuation order. Authorities will direct you to leave if you are in a low-lying area, or within the greatest potential path of the rising waters. If a flood warning is issued for your area or you are directed by authorities to evacuate the area: \n \n
+            • Take only essential items with you. \n \n
+            • If you have time, turn off the gas, electricity, and water. \n \n
+            • Disconnect appliances to prevent electrical shock when power is restored. \n \n
+            • Follow the designated evacuation routes and expect heavy traffic. \n \n
+            • Do not attempt to drive or walk across creeks or flooded roads. \n \n
+    </string>
+
+    <string name="text_step_6">
+        To get through the storm in the safest possible manner: \n \n
+            • Monitor the radio or television for weather updates. \n \n
+            • Prepare to evacuate to a shelter or to a neighbor\'s home if your home is damaged, or if you are instructed to do so by emergency personnel. \n \n
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- PARTICULAR GUIDELINES -->
+    <string name="text_particular_guide_1">
+        There are “Colors of Safety Markers” placed in and around your barangay for your visual reference.
+    </string>
+
+    <string name="text_particular_guide_2">
+        “Color of safety” Markets: About 193 flood markers are installed &amp; re-paint at strategic places in the barangays.
+    </string>
+
+    <string name="text_level3_gl">
+        When flood waters begin reaching the 3rd section of the marker (colored RED) evacuation by truck may already be risky. Thus, those who refuse evacuation during the red section level cannot be anymore considered priority for the evacuation phase.
+   </string>
+
+    <string name="text_level2_gl">
+        When flood waters begin reaching the 2nd second of the marker (colored ORANGE), evacuation may be imminent. At this point listen for audible sirens and other warning systems as a signal for evacuation commencing in your local purok. Barangay authorities will initiate the evacuation of families into holding areas pre-selected by the local BDRRMC. From that place, you will be fetched by trucks dispatched from the municipal level or MDRRMC. In other words, the evacuation phase is designated by the 2nd red colored section of your local purok flood marker.
+  </string>
+
+    <string name="text_level1_gl">
+        When flood waters begin reaching the lowest level (colored YELLOW), families should begin preparing their family, property, and emergency kit for a possible evacuation.
+    </string>
+
+    <!-- PAGASA UPDATES -->
+    <string name="text_pagasa_title">PAGASA Updates</string>
 
 </resources>
