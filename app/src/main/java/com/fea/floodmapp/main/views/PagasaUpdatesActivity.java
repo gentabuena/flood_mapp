@@ -58,13 +58,16 @@ public class PagasaUpdatesActivity extends AppCompatActivity {
     }
     private void loadWebViewURL(){
         activityPagasaUpdatesBinding.wvPagasaTwitter.setWebViewClient(new WebViewClient());
-        //activityPagasaUpdatesBinding.wvPagasaTwitter.loadUrl("https://mobile.twitter.com/pagasaffws");
-        activityPagasaUpdatesBinding.wvPagasaTwitter.loadDataWithBaseURL(baseURl, widgetInfo, "text/html", "UTF-8", null);
+        activityPagasaUpdatesBinding.wvPagasaTwitter.loadUrl("https://mobile.twitter.com/pagasaffws");
+
+        // Embedded Link for Twitter
+        //activityPagasaUpdatesBinding.wvPagasaTwitter.loadDataWithBaseURL(baseURl, widgetInfo, "text/html", "UTF-8", null);
 
         WebSettings webSettings = activityPagasaUpdatesBinding.wvPagasaTwitter.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
+        /** Disable touch
         activityPagasaUpdatesBinding.wvPagasaTwitter.setLongClickable(false);
-        activityPagasaUpdatesBinding.wvPagasaTwitter.setOnTouchListener((arg0, arg1) -> arg1.getAction() == MotionEvent.ACTION_UP);
+        activityPagasaUpdatesBinding.wvPagasaTwitter.setOnTouchListener((arg0, arg1) -> arg1.getAction() == MotionEvent.ACTION_UP); **/
     }
 }
