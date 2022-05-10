@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:elevation="2dp"
+        android:background="@color/background_gray"
+        android:layout_marginBottom="5dp"
+        >
+
+        <RelativeLayout
+            android:layout_weight=".15"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/piv_drag_icon"
+                android:layout_width="@dimen/margin_xlarge"
+                android:layout_height="@dimen/margin_xlarge"
+                android:layout_centerInParent="true"
+                android:src="@drawable/location_pin"
+                app:tint="@color/signin_button_blue" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".70"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_evacsite_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat_bold"
+                android:maxLines="2"
+                android:text="@string/text_lorem_ipsum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_xlarge"
+                />
+
+            <TextView
+                android:id="@+id/tv_evacsite_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/text_lorem_ipsum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:id="@+id/tv_evacsite_population"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat_regular"
+                android:maxLength="45"
+                android:maxLines="1"
+                android:text="@string/text_lorem_ipsum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:id="@+id/tv_evacsite_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat_regular"
+                android:maxLength="45"
+                android:maxLines="1"
+                android:text="@string/text_lorem_ipsum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt_evacsite_navigate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".15"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/margin_xlarge"
+                android:layout_height="@dimen/margin_xlarge"
+                android:layout_centerInParent="true"
+                android:src="@drawable/location_navigate"
+                app:tint="@color/signin_button_blue" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

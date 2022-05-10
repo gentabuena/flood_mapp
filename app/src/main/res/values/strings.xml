@@ -11,12 +11,25 @@
     <string name="text_forgot_password">Forgot Password?</string>
 
     <string name="text_home">Home</string>
-
-    <!-- STATICS -->
     <string name="text_juan">Juan Dela Cruz</string>
+    <string name="text_ok">OK</string>
+
+    <string name="network_failure">No internet connection. Check your network settings and try again.</string>
+    <string name="network_failure_access_feature">Internet connection is required to access this feature.</string>
 
     <!-- URLS -->
     <string name="base_url">Sign up!</string>
+    <string name="google_oauth">"423938285702-jam7586bljpdm5aemdp6dndn3d9hta6u.apps.googleusercontent.com"</string>
+    <string name="weather_forecast_url">https://fea-app.herokuapp.com/weathers</string>
+    <string name="about_url">https://fea-app.herokuapp.com/about-us</string>
+    <string name="terms_conditions_url">https://fea-app.herokuapp.com/terms-and-conditions</string>
+    <string name="privacy_policy_url">https://fea-app.herokuapp.com/privacy-policy</string>
+
+    <!-- EVACUATION SITES -->
+    <string name="text_evacuation_sites">Evacuation Sites</string>
+
+    <!-- WEATHER FORECAST -->
+    <string name="text_weather_forecast">Weather Forecast</string>
 
     <!-- SIGNINUP ACTIVITY -->
     <string name="text_no_account">Don\'t have an account?</string>
@@ -58,6 +71,9 @@
     <string name="text_044_9137">• (044)–913–7289</string>
     <string name="text_044_3205">• (044)–320–5605</string>
     <string name="text_044_3200">• (044)–320–0305</string>
+    <string name="text_0916_390">• 0916–390–3931</string>
+    <string name="text_0925_522">• 0925–522–5237</string>
+    <string name="text_044_390">• (044)–913–7289</string>
 
     <!-- FLOOD PREP GUIDELINES -->
     <string name="text_flood_prep_guide">Flood Preparation Guidelines</string>
@@ -154,9 +170,6 @@
             • Prepare to evacuate to a shelter or to a neighbor\'s home if your home is damaged, or if you are instructed to do so by emergency personnel. \n \n
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!-- PARTICULAR GUIDELINES -->
     <string name="text_particular_guide_1">
         There are “Colors of Safety Markers” placed in and around your barangay for your visual reference.
@@ -180,5 +193,46 @@
 
     <!-- PAGASA UPDATES -->
     <string name="text_pagasa_title">PAGASA Updates</string>
+
+    <!-- SAFETY PRECAUTIONS -->
+    <string name="text_safety_prec_before_title">Before</string>
+    <string name="text_safety_prec_when_title">When Warned</string>
+    <string name="text_safety_prec_during_title">During</string>
+
+    <string name="text_safety_prec_before_flood">Before the Flood</string>
+    <string name="text_safety_prec_when_flood">When Warned of Flood</string>
+    <string name="text_safety_prec_during_flood">During the Flood</string>
+
+    <string name="text_safety_prec_before_reminder">
+        • Find out how often your location is likely to be flooded. \n \n
+        • Know the flood warning system in your community and be sure your family knows it. \n \n
+        • Keep informed of daily weather conditions. \n \n
+        • Designate an evacuation area for the family and livestock. \n \n
+        • Assign family members instructions and responsibilities according to an evacuation plan. \n \n
+        • Keep a stock of food which requires little cooking and refrigeration; electric power may be interrupted. \n \n
+        • Keep a transistorized radio and flashlight with spare batteries, emergency cooking equipment, candies, matches and first aid kit handy in case of emergency. \n \n
+        • Store supplies and other household effects above expected flood water level. \n \n
+        • Securely anchor weak dwellings and items. \n \n
+    </string>
+
+    <string name="text_safety_prec_when_reminder">
+        • Watch for rapidly rising flood waters. \n \n
+        • Listen to your radio for emergency instructions. \n \n
+        • If you find it necessary to evacuate, move to a safe area before access is cut off by flood waters. \n \n
+        • Store drinking water in containers, water service may be interrupted. \n \n
+        • Move household belongings to upper levels. \n \n
+        • Get livestock to higher ground. \n \n
+        • Turn off electricity at the main switch in the building before evacuating and also lock your house. \n \n
+    </string>
+
+    <string name="text_safety_prec_during_reminder">
+        • Avoid areas subject to sudden flooding. \n \n
+        • Do not attempt to cross rivers of flowing streams where water is above the knee. \n \n
+        • Beware of water-covered roads and bridges. \n \n
+        • Avoid unnecessary exposure to the elements. \n \n
+        • Do not go swimming or boating in swollen rivers. \n \n
+        • Eat only well-cooked food. Protect leftovers against contamination. \n \n
+        • Drink clean or preferably boiled water ONLY. \n \n
+    </string>
 
 </resources>

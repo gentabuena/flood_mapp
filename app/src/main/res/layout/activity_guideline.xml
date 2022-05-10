@@ -65,8 +65,8 @@
                     android:textColor="@color/signin_button_blue"
                     android:textSize="@dimen/text_normal" />
 
-                <LinearLayout
-                    android:id="@+id/llt_gl_level_container"
+                <ScrollView
+                    android:id="@+id/sv_gl_level_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/tv_gl_warning_title"
@@ -79,53 +79,233 @@
                     android:orientation="vertical"
                     android:outlineProvider="bounds"
                     android:visibility="visible"
-                    android:weightSum="1">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight=".15">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="0dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:text="@string/text_particular_guide_1"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/text_normal" />
-
-                    </RelativeLayout>
+                    >
 
                     <LinearLayout
+                        android:id="@+id/llt_gl_level_container"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_margin="22dp"
-                        android:layout_weight=".7"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:weightSum="1">
+                        >
 
                         <RelativeLayout
-                            android:id="@+id/rlt_particular_gl_level3"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight=".33"
-                            android:background="@color/warning_level_3">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="0dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="@string/text_particular_guide_1"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/text_normal" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="22dp"
+                            android:layout_weight=".7"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <RelativeLayout
+                                android:id="@+id/rlt_particular_gl_level3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/warning_level_3">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:paddingTop="15dp"
+                                    android:paddingBottom="15dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_particular_level3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="Level 3"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/text_xlarge" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_large"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginEnd="@dimen/margin_large"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="LUMIKAS"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/text_xlarge" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rlt_particular_gl_level2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/warning_level_2">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:paddingTop="15dp"
+                                    android:paddingBottom="15dp">
+
+                                    <TextView
+                                        android:id="@+id/tv_particular_level2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="Level 2"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/text_xlarge" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_large"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginEnd="@dimen/margin_large"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="Alerto sa posibleng paglikas"
+                                        android:textAlignment="center"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/text_xlarge" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rlt_particular_gl_level1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/warning_level_1">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:paddingTop="15dp"
+                                    android:paddingBottom="15dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_particular_level1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="Level 1"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/text_xlarge" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_large"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginEnd="@dimen/margin_large"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="Imonitor ang lagay ng panahon"
+                                        android:textAlignment="center"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/text_xlarge" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="20dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:text="@string/text_particular_guide_2"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/text_normal" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <ScrollView
+                    android:id="@+id/sv_gl_level3_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="20dp"
+                    android:layout_below="@+id/tv_gl_warning_title"
+                    android:elevation="4dp"
+                    android:visibility="gone"
+                    android:animateLayoutChanges="true"
+                    android:background="?android:colorBackground"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/llt_gl_level3_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/rlt_level3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/warning_level_3"
+                            android:layout_margin="20dp"
+                            >
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp">
 
                                 <TextView
-                                    android:id="@+id/tv_particular_level3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/montserrat_bold"
@@ -148,22 +328,62 @@
 
                         </RelativeLayout>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/text_level3_gl"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/text_normal" />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <ScrollView
+                    android:id="@+id/sv_gl_level2_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="20dp"
+                    android:outlineProvider="bounds"
+                    android:layout_below="@+id/tv_gl_warning_title"
+                    android:elevation="4dp"
+                    android:visibility="gone"
+                    android:animateLayoutChanges="true"
+                    android:background="?android:colorBackground"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/llt_gl_level2_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
                         <RelativeLayout
-                            android:id="@+id/rlt_particular_gl_level2"
+                            android:id="@+id/rlt_level2"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight=".33"
-                            android:background="@color/warning_level_2">
+                            android:layout_height="wrap_content"
+                            android:background="@color/warning_level_2"
+                            android:layout_margin="20dp"
+                            >
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp"
+                                >
 
                                 <TextView
-                                    android:id="@+id/tv_particular_level2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/montserrat_bold"
@@ -188,22 +408,64 @@
 
                         </RelativeLayout>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/text_level2_gl"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/text_normal"
+                            android:layout_marginBottom="20dp"
+                            />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <ScrollView
+                    android:id="@+id/sv_gl_level1_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="20dp"
+                    android:outlineProvider="bounds"
+                    android:layout_below="@+id/tv_gl_warning_title"
+                    android:elevation="4dp"
+                    android:visibility="gone"
+                    android:animateLayoutChanges="true"
+                    android:background="?android:colorBackground"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/llt_gl_level1_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
                         <RelativeLayout
-                            android:id="@+id/rlt_particular_gl_level1"
+                            android:id="@+id/rlt_level1"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight=".33"
-                            android:background="@color/warning_level_1">
+                            android:layout_height="wrap_content"
+                            android:background="@color/warning_level_1"
+                            android:layout_margin="20dp"
+                            >
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp"
+                                >
 
                                 <TextView
-                                    android:id="@+id/tv_particular_level1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/montserrat_bold"
@@ -217,311 +479,33 @@
                                     android:layout_marginStart="@dimen/margin_large"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="@dimen/margin_large"
-                                    android:ellipsize="end"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="Imonitor ang lagay ng panahon"
-                                    android:textColor="@color/black"
                                     android:textAlignment="center"
                                     android:textAllCaps="true"
+                                    android:textColor="@color/black"
                                     android:textSize="@dimen/text_xlarge" />
 
                             </LinearLayout>
 
                         </RelativeLayout>
 
-
-                    </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight=".15">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="0dp"
                             android:layout_marginEnd="20dp"
                             android:ellipsize="end"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="@string/text_particular_guide_2"
+                            android:text="@string/text_level1_gl"
                             android:textAlignment="center"
-                            android:textSize="@dimen/text_normal" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llt_gl_level3_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="20dp"
-                    android:outlineProvider="bounds"
-                    android:layout_below="@+id/tv_gl_warning_title"
-                    android:elevation="4dp"
-                    android:visibility="gone"
-                    android:animateLayoutChanges="true"
-                    android:background="?android:colorBackground">
-
-                    <RelativeLayout
-                        android:id="@+id/rlt_level3"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@color/warning_level_3"
-                        android:layout_margin="20dp"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:text="Level 3"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/text_xlarge"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_large"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="@dimen/margin_large"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:text="LUMIKAS"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/text_xlarge" />
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="20dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/text_level3_gl"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/text_normal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llt_gl_level2_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="20dp"
-                    android:outlineProvider="bounds"
-                    android:layout_below="@+id/tv_gl_warning_title"
-                    android:elevation="4dp"
-                    android:visibility="gone"
-                    android:animateLayoutChanges="true"
-                    android:background="?android:colorBackground">
-
-                    <RelativeLayout
-                        android:id="@+id/rlt_level2"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@color/warning_level_2"
-                        android:layout_margin="20dp"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:text="Level 2"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/text_xlarge"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_large"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="@dimen/margin_large"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:text="Alerto sa posibleng paglikas"
-                                android:textAlignment="center"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/text_xlarge" />
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="20dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/text_level2_gl"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/text_normal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llt_gl_level1_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="20dp"
-                    android:outlineProvider="bounds"
-                    android:layout_below="@+id/tv_gl_warning_title"
-                    android:elevation="4dp"
-                    android:visibility="gone"
-                    android:animateLayoutChanges="true"
-                    android:background="?android:colorBackground">
-
-                    <RelativeLayout
-                        android:id="@+id/rlt_level1"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@color/warning_level_1"
-                        android:layout_margin="20dp"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:text="Level 1"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_xlarge" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_large"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="@dimen/margin_large"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:text="Imonitor ang lagay ng panahon"
-                                android:textAlignment="center"
-                                android:textAllCaps="true"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_xlarge" />
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="20dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/text_level1_gl"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/text_normal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_below="@+id/tv_gl_warning_title"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="20dp"
-                    android:weightSum="1"
-                    android:outlineProvider="bounds"
-                    android:elevation="2dp"
-                    android:visibility="gone"
-                    >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".15"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_particular_guide_1"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/text_large"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:layout_centerInParent="true"
+                            android:textSize="@dimen/text_normal"
+                            android:layout_marginBottom="20dp"
                             />
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".7"
-                        >
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".15"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_particular_guide_2"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/text_large"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:layout_centerInParent="true"
-                            />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
 
             </RelativeLayout>
 
@@ -577,7 +561,10 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_gl_title_basic"
                             android:layout_alignParentBottom="true"
-                            android:layout_margin="15dp">
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="15dp">
 
                             <TextView
                                 android:layout_width="match_parent"

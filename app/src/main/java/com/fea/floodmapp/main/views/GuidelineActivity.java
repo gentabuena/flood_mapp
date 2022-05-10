@@ -126,9 +126,9 @@ public class GuidelineActivity extends AppCompatActivity {
                 v.setEnabled(true); // re-enable here
             }, 700);
 
-            activityGuidelineBinding.lltGlLevel3Container.setVisibility(View.VISIBLE);
+            activityGuidelineBinding.svGlLevel3Container.setVisibility(View.VISIBLE);
             animation = AnimationUtils.loadAnimation(this, R.anim.slidein_left);
-            activityGuidelineBinding.lltGlLevel3Container.setAnimation(animation);
+            activityGuidelineBinding.svGlLevel3Container.setAnimation(animation);
         });
 
         activityGuidelineBinding.rltParticularGlLevel2.setOnClickListener(v -> {
@@ -137,9 +137,9 @@ public class GuidelineActivity extends AppCompatActivity {
                 v.setEnabled(true); // re-enable here
             }, 700);
 
-            activityGuidelineBinding.lltGlLevel2Container.setVisibility(View.VISIBLE);
+            activityGuidelineBinding.svGlLevel2Container.setVisibility(View.VISIBLE);
             animation = AnimationUtils.loadAnimation(this, R.anim.slidein_left);
-            activityGuidelineBinding.lltGlLevel2Container.setAnimation(animation);
+            activityGuidelineBinding.svGlLevel2Container.setAnimation(animation);
         });
 
         activityGuidelineBinding.rltParticularGlLevel1.setOnClickListener(v -> {
@@ -148,9 +148,9 @@ public class GuidelineActivity extends AppCompatActivity {
                 v.setEnabled(true); // re-enable here
             }, 700);
 
-            activityGuidelineBinding.lltGlLevel1Container.setVisibility(View.VISIBLE);
+            activityGuidelineBinding.svGlLevel1Container.setVisibility(View.VISIBLE);
             animation = AnimationUtils.loadAnimation(this, R.anim.slidein_left);
-            activityGuidelineBinding.lltGlLevel1Container.setAnimation(animation);
+            activityGuidelineBinding.svGlLevel1Container.setAnimation(animation);
         });
 
         activityGuidelineBinding.lltGlLevel3Container.setOnClickListener(v -> {
@@ -159,9 +159,9 @@ public class GuidelineActivity extends AppCompatActivity {
                 v.setEnabled(true); // re-enable here
             }, 700);
 
-            activityGuidelineBinding.lltGlLevel3Container.setVisibility(View.GONE);
+            activityGuidelineBinding.svGlLevel3Container.setVisibility(View.GONE);
             animation = AnimationUtils.loadAnimation(this, R.anim.slideout_right);
-            activityGuidelineBinding.lltGlLevel3Container.setAnimation(animation);
+            activityGuidelineBinding.svGlLevel3Container.setAnimation(animation);
         });
 
         activityGuidelineBinding.lltGlLevel2Container.setOnClickListener(v -> {
@@ -170,9 +170,9 @@ public class GuidelineActivity extends AppCompatActivity {
                 v.setEnabled(true); // re-enable here
             }, 700);
 
-            activityGuidelineBinding.lltGlLevel2Container.setVisibility(View.GONE);
+            activityGuidelineBinding.svGlLevel2Container.setVisibility(View.GONE);
             animation = AnimationUtils.loadAnimation(this, R.anim.slideout_right);
-            activityGuidelineBinding.lltGlLevel2Container.setAnimation(animation);
+            activityGuidelineBinding.svGlLevel2Container.setAnimation(animation);
         });
 
         activityGuidelineBinding.lltGlLevel1Container.setOnClickListener(v -> {
@@ -181,9 +181,9 @@ public class GuidelineActivity extends AppCompatActivity {
                 v.setEnabled(true); // re-enable here
             }, 700);
 
-            activityGuidelineBinding.lltGlLevel1Container.setVisibility(View.GONE);
+            activityGuidelineBinding.svGlLevel1Container.setVisibility(View.GONE);
             animation = AnimationUtils.loadAnimation(this, R.anim.slideout_right);
-            activityGuidelineBinding.lltGlLevel1Container.setAnimation(animation);
+            activityGuidelineBinding.svGlLevel1Container.setAnimation(animation);
         });
     }
 }

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.views.SafetyPrecautionsActivity">
+
+    <ImageView
+        android:id="@+id/iv_header_status_bar_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_gradient_navigation"
+        tools:ignore="ContentDescription" />
+
+    <include
+        android:id="@+id/inc_header"
+        layout="@layout/activity_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/iv_header_status_bar_overlay"
+        android:layout_marginTop="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/inc_header"
+        android:layout_alignParentBottom="true"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_safety_titles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:elevation="10dp"
+                android:weightSum="1"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/rlt_safety_before_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/tv_safety_before_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="@string/text_safety_prec_before_title"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_large" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlt_safety_warned_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".33"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_safety_warned_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_safety_prec_when_title"
+                        android:textSize="@dimen/text_large"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textAlignment="center"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlt_safety_during_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".33"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_safety_during_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_safety_prec_during_title"
+                        android:textSize="@dimen/text_large"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <HorizontalScrollView
+            android:id="@+id/sv_safety_flood_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_safety_before"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardUseCompatPadding="true"
+                    app:cardElevation="10dp"
+                    app:cardCornerRadius="12dp"
+                    android:visibility="visible"
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/rlt_guideline_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                        <RelativeLayout
+                                android:layout_width="350dp"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_gl_title_basic"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="@string/text_safety_prec_before_flood"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/signin_button_blue"
+                                    android:textSize="@dimen/text_large" />
+
+                            <ScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_gl_title_basic"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:justificationMode="inter_word"
+                                    android:text="@string/text_safety_prec_before_reminder"
+                                    android:textSize="@dimen/text_large" />
+
+                            </ScrollView>
+
+                            </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_safety_when_warned"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:cardElevation="10dp"
+                    card_view:cardCornerRadius="12dp"
+                    android:visibility="visible"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="350dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_gl_title_when_warned"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="15dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="@string/text_safety_prec_when_flood"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/signin_button_blue"
+                                android:textSize="@dimen/text_large" />
+
+                            <ScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_gl_title_when_warned"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="15dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:justificationMode="inter_word"
+                                    android:text="@string/text_safety_prec_when_reminder"
+                                    android:textSize="@dimen/text_large" />
+
+                            </ScrollView>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_safety_during"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:cardElevation="10dp"
+                    card_view:cardCornerRadius="12dp"
+                    android:visibility="visible"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="350dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_gl_title_during"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="15dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="@string/text_safety_prec_during_flood"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/signin_button_blue"
+                                android:textSize="@dimen/text_large" />
+
+                            <ScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_gl_title_during"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="15dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:justificationMode="inter_word"
+                                    android:text="@string/text_safety_prec_during_reminder"
+                                    android:textSize="@dimen/text_large" />
+
+                            </ScrollView>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

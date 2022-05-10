@@ -2,6 +2,7 @@ package com.fea.floodmapp.main.views.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,24 +21,29 @@ import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.FragmentProfileBinding;
+import com.fea.floodmapp.main.database.DatabaseHelper;
+import com.fea.floodmapp.main.datamodels.UserInfoModel;
 import com.fea.floodmapp.main.utils.SessionManager;
+import com.fea.floodmapp.main.views.MainActivity;
 import com.fea.floodmapp.main.views.SettingsActivity;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import javax.inject.Inject;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProfileFragment extends Fragment {
 
+    private static final String TAG = "ProfileFragment";
     FragmentProfileBinding fragmentProfileBinding;
-    SlidingUpPanelLayout settingsSlider;
+
     boolean profileOnEdit = false;
+    UserInfoModel userInfoModel;
 
     private final int popupSettings = R.id.menu_settings;
     private final int popupEditProfile = R.id.menu_edit_profile;
@@ -45,45 +52,15 @@ public class ProfileFragment extends Fragment {
     SessionManager sessionManager;
 
     Context context;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    DatabaseHelper databaseHelper;
 
     public ProfileFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
         context = getActivity();
     }
 
@@ -97,10 +74,27 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initializeViews();
+        fetchFromLocalDB();
+        setImageViewToGmailDP();
+        setViewsInfo();
+    }
+
+    private void setViewsInfo() {
+        fragmentProfileBinding.etFragProfileEmail.setText(userInfoModel.getUserGmail());
+        fragmentProfileBinding.etFragProfileName.setText(userInfoModel.getUserFullName());
+        fragmentProfileBinding.etFragProfileAddress.setText(userInfoModel.getUserAddress());
+        fragmentProfileBinding.etFragProfileContact.setText(userInfoModel.getUserContactNumber());
+        fragmentProfileBinding.etFragProfileAge.setText(String.valueOf(userInfoModel.getUserAge()));
+        fragmentProfileBinding.etFragProfileGender.setText(userInfoModel.getUserGender());
+
+        fragmentProfileBinding.tvFragProfileSave.setOnClickListener(v -> {
+            updateUserInfoLocalDB();
+        });
     }
 
     private void initializeViews(){
         fragmentProfileBinding.ivFragProfileSettings.setOnClickListener(this::showPopup);
+
     }
 
     private void goToSettings(){
@@ -155,9 +149,9 @@ public class ProfileFragment extends Fragment {
 
     private void enableViewsForEdit(){
         profileOnEdit = true;
-        Toast.makeText(context, "Editing privilege granted!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "You can now edit your profile!", Toast.LENGTH_SHORT).show();
 
-        fragmentProfileBinding.etFragProfileName.setEnabled(true);
+        //fragmentProfileBinding.etFragProfileName.setEnabled(true);
         fragmentProfileBinding.etFragProfileAddress.setEnabled(true);
         fragmentProfileBinding.etFragProfileContact.setEnabled(true);
         fragmentProfileBinding.etFragProfileAge.setEnabled(true);
@@ -167,13 +161,53 @@ public class ProfileFragment extends Fragment {
 
     public void disableViewsForEdit(){
         profileOnEdit = false;
-        Toast.makeText(context, "Editing privilege revoked!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Editing privilege revoked!", Toast.LENGTH_SHORT).show();
 
-        fragmentProfileBinding.etFragProfileName.setEnabled(false);
+        //fragmentProfileBinding.etFragProfileName.setEnabled(false);
         fragmentProfileBinding.etFragProfileAddress.setEnabled(false);
         fragmentProfileBinding.etFragProfileContact.setEnabled(false);
         fragmentProfileBinding.etFragProfileAge.setEnabled(false);
         fragmentProfileBinding.etFragProfileGender.setEnabled(false);
         fragmentProfileBinding.lltFragProfileSave.setVisibility(View.GONE);
+    }
+
+    private void fetchFromLocalDB(){
+        databaseHelper = DatabaseHelper.getInstance(context);
+        userInfoModel = databaseHelper.getUserInfoFromLocalDB(context);
+    }
+
+    private void updateUserInfoLocalDB(){
+        try {
+            int userAge = Integer.parseInt(fragmentProfileBinding.etFragProfileAge.getText().toString());
+            String userGender = fragmentProfileBinding.etFragProfileGender.getText().toString();
+            String userMobile = fragmentProfileBinding.etFragProfileContact.getText().toString();
+            String userAddress = fragmentProfileBinding.etFragProfileAddress.getText().toString();
+            databaseHelper.updateUserInfoOnLocalDB(context, userInfoModel.getUserID(), userAge, userGender, userMobile, userAddress);
+            Toast.makeText(context, "Update on Local Success!", Toast.LENGTH_SHORT).show();
+
+            disableViewsForEdit();
+        } catch (Exception e) {
+            Toast.makeText(context, "Update on Local Failed!", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Error here -- " + e);
+            e.printStackTrace();
+        }
+    }
+
+    private void setImageViewToGmailDP(){
+        Glide.with(this)
+                .load(userInfoModel.getUserDisplayPhoto())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        fragmentProfileBinding.ivFragProfileDp.setBackgroundResource(R.drawable.user_icon);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        fragmentProfileBinding.ivFragProfileDp.setVisibility(View.VISIBLE);
+                        return false;
+                    }
+                }).into(fragmentProfileBinding.ivFragProfileDp);
     }
 }
