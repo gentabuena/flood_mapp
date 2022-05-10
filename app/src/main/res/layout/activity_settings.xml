@@ -39,7 +39,7 @@
             android:layout_weight=".25"
             >
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_frag_profile_dp"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
@@ -104,6 +104,7 @@
                 >
 
                 <RelativeLayout
+                    android:id="@+id/rlt_settings_about_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/margin_xsmall"
@@ -133,6 +134,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlt_settings_privacy_policy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/margin_xsmall"
@@ -160,6 +162,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rlt_settings_terms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/margin_xsmall"
@@ -195,20 +198,19 @@
                     >
 
                     <TextView
-                        android:id="@+id/tv_frag_profile_save"
+                        android:id="@+id/tv_settings_signout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_rounded_blue"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
                         android:text="@string/text_sign_out"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        />
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
 

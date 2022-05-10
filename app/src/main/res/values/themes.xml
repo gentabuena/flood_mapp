@@ -36,4 +36,15 @@
         <item name="android:textSize">@dimen/text_large</item>z
         <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
+
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/signin_button_blue</item>
+        <item name="android:background">@drawable/d_brodor</item>
+        <!-- Used for the title and text -->
+        <item name="android:textAppearanceSmall">@font/montserrat_regular</item>
+        <item name="android:textAppearanceMedium">@font/montserrat_regular</item>
+        <item name="android:textAppearanceLarge">@font/montserrat_regular</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
 </resources>

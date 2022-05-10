@@ -78,7 +78,7 @@
             android:name=".main.views.EvacuationSitesActivity"
             android:exported="false"
             android:theme="@style/Theme.FloodMApp.NoActionBar" />
-        
+
     </application>
 
 </manifest>

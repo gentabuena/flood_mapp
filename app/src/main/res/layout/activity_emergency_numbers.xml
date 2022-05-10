@@ -201,6 +201,14 @@
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="@dimen/text_normal" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="@string/text_0916_390"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="@dimen/text_normal" />
 
                     </LinearLayout>
 
@@ -274,6 +282,15 @@
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="@dimen/text_normal" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="•  0916–390–3931"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="@dimen/text_normal" />
+
                     </LinearLayout>
 
                 </RelativeLayout>
@@ -287,7 +304,6 @@
                 android:paddingEnd="15dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_marginBottom="15dp"
                 >
 
                 <RelativeLayout
@@ -334,7 +350,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="@string/text_0923"
+                            android:text="@string/text_0925_522"
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="@dimen/text_normal" />
 
@@ -344,6 +360,133 @@
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/montserrat_bold"
                             android:text="@string/text_044_913"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="@dimen/text_normal" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_blue_textview_rounded">
+
+                    <ImageView
+                        android:id="@+id/iv_enumbers_callssss"
+                        android:layout_width="@dimen/margin_xlarge"
+                        android:layout_height="@dimen/margin_xlarge"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/enumber_call" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@+id/iv_enumbers_callssss"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="MDRRMO – Municipal Disaster Risk Reduction and Management Office"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="@dimen/text_large" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="• (044)–320–5605"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="@dimen/text_normal" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginBottom="15dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_blue_textview_rounded">
+
+                    <ImageView
+                        android:id="@+id/iv_enumbers_callsssss"
+                        android:layout_width="@dimen/margin_xlarge"
+                        android:layout_height="@dimen/margin_xlarge"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/enumber_call" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@+id/iv_enumbers_callsssss"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="MSWDO - Municipal Social Welfare and Development Office"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="@dimen/text_large" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="• (044)–320–0305"
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="@dimen/text_normal" />
 

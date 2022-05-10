@@ -66,8 +66,22 @@ public class PagasaUpdatesActivity extends AppCompatActivity {
         WebSettings webSettings = activityPagasaUpdatesBinding.wvPagasaTwitter.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
+        activityPagasaUpdatesBinding.wvPagasaTwitter.setWebViewClient(new WebViewClient(){
+
+        });
+
+
         /** Disable touch
         activityPagasaUpdatesBinding.wvPagasaTwitter.setLongClickable(false);
         activityPagasaUpdatesBinding.wvPagasaTwitter.setOnTouchListener((arg0, arg1) -> arg1.getAction() == MotionEvent.ACTION_UP); **/
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (activityPagasaUpdatesBinding.wvPagasaTwitter.canGoBack()) {
+            activityPagasaUpdatesBinding.wvPagasaTwitter.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

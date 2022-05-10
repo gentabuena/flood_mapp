@@ -48,4 +48,30 @@ public class SessionManager {
     public void clearCache(){
         sharedPreferences.edit().clear().apply();
     }
+
+    public String getCurrentLat() {
+        return sharedPreferences.getString("currentLat", "");
+    }
+
+    public void setCurrentLat(String currentLat) {
+        if(currentLat!=null&&!currentLat.isEmpty())
+            sharedPreferences.edit().putString("currentLat", currentLat).apply();
+    }
+
+    public String getCurrentLong() {
+        return sharedPreferences.getString("currentLong", "");
+    }
+
+    public void setCurrentLong(String currentLong) {
+        if(currentLong!=null&&!currentLong.isEmpty())
+            sharedPreferences.edit().putString("currentLong", currentLong).apply();
+    }
+
+    public String getCity() {
+        return sharedPreferences.getString("city", "");
+    }
+
+    public void setCity(String city) {
+        sharedPreferences.edit().putString("city", city).apply();
+    }
 }
