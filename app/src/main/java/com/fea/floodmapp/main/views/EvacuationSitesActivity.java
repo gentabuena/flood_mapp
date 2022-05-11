@@ -3,6 +3,7 @@ package com.fea.floodmapp.main.views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -70,6 +71,7 @@ public class EvacuationSitesActivity extends AppCompatActivity {
 
         overlayGradientImageViewOnStatusBar();
         setViews();
+        startShimmer();
         fetchEvacuationSitesAPI();
     }
 
@@ -113,44 +115,62 @@ public class EvacuationSitesActivity extends AppCompatActivity {
                         Type arraylistType = new TypeToken<ArrayList<EvacuationSitesModel>>(){}.getType();
                         evacuationSitesModelArrayList = gson.fromJson(strResponse, arraylistType);
                         showEvacuationSites();
+                        stopShimmer();
                     } catch (IOException e) {
                         Log.d(TAG, "Error here -- " + e.getMessage());
+                        stopShimmer();
+                        if (!commonMethods.isOnline(EvacuationSitesActivity.this)){
+                            dialog = commonMethods.getAlertDialog(EvacuationSitesActivity.this, getResources().getString(R.string.network_failure));
+                        } else {
+                            dialog = commonMethods.getAlertDialog(EvacuationSitesActivity.this, getResources().getString(R.string.something_went_wrong));
+                        }
+                        dialog.show();
                     }
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(EvacuationSitesActivity.this, "Something went wrong. Please try again.", Toast.LENGTH_SHORT).show();
+                stopShimmer();
+                if (!commonMethods.isOnline(EvacuationSitesActivity.this)){
+                    dialog = commonMethods.getAlertDialog(EvacuationSitesActivity.this, getResources().getString(R.string.network_failure));
+                } else {
+                    dialog = commonMethods.getAlertDialog(EvacuationSitesActivity.this, getResources().getString(R.string.something_went_wrong));
+                }
+                dialog.show();
                 Log.d(TAG, "Response here -- " + t.getMessage());
             }
         });
     }
 
     private void showEvacuationSites(){
-
         for (EvacuationSitesModel evacuationSites : evacuationSitesModelArrayList){
             View locationView;
             locationView = LayoutInflater.from(this).inflate(R.layout.evacuation_site, null);
             activityEvacuationSitesBinding.lltEvacsiteLocationContainer.addView(locationView);
 
-            TextView evacuationSiteName, evacuationSiteDistance, evacuationSitePopulation, evacuationSiteAddress;
+            TextView evacuationSiteName, evacuationSiteDistance, evacuationSitePopulation, evacuationSiteAddress, evacuationSiteStatus;
             RelativeLayout navigate;
             evacuationSiteName = locationView.findViewById(R.id.tv_evacsite_name);
             evacuationSiteDistance = locationView.findViewById(R.id.tv_evacsite_distance);
             evacuationSitePopulation = locationView.findViewById(R.id.tv_evacsite_population);
+            evacuationSiteStatus = locationView.findViewById(R.id.tv_evacsite_status);
             evacuationSiteAddress  = locationView.findViewById(R.id.tv_evacsite_address);
             navigate = locationView.findViewById(R.id.rlt_evacsite_navigate);
 
             evacuationSiteName.setText(evacuationSites.getName());
 
-            String currentPopulation = "Current Population: " + evacuationSites.getPopulation();
+            String currentStatus = "Status: " + (evacuationSites.getStatus() == 0 ? "Available" : "Full");
+            evacuationSiteStatus.setText(currentStatus);
+            evacuationSiteStatus.setTextColor(ContextCompat.getColor(this, (evacuationSites.getStatus() == 0 ? R.color.black : R.color.full_red)));
+
+            String currentPopulation = "Population: " + evacuationSites.getPopulation();
             evacuationSitePopulation.setText(currentPopulation);
 
             String evacAddress = "Address: " + evacuationSites.getAddress();
             evacuationSiteAddress.setText(evacAddress);
 
-            String roundedDistance = "Distance from you: " + String.format(Locale.US,"%.0f", Double.valueOf(evacuationSites.getDistance())) + "KM";
+            String roundedDistance = "Estimated Distance: " + String.format(Locale.US,"%.3f", Double.valueOf(evacuationSites.getDistance())) + " KM";
             evacuationSiteDistance.setText(roundedDistance);
 
             navigate.setOnClickListener(v -> navigateToMap(evacuationSites.getLongitude(),evacuationSites.getLatitude()));
@@ -199,5 +219,17 @@ public class EvacuationSitesActivity extends AppCompatActivity {
             dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
             dialog.show();
         }
+    }
+
+    private void startShimmer(){
+        activityEvacuationSitesBinding.svEvacsiteLocations.setVisibility(View.INVISIBLE);
+        activityEvacuationSitesBinding.shimmerEvacsite.setVisibility(View.VISIBLE);
+        activityEvacuationSitesBinding.shimmerEvacsite.startShimmer();
+    }
+
+    private void stopShimmer(){
+        activityEvacuationSitesBinding.svEvacsiteLocations.setVisibility(View.VISIBLE);
+        activityEvacuationSitesBinding.shimmerEvacsite.setVisibility(View.INVISIBLE);
+        activityEvacuationSitesBinding.shimmerEvacsite.stopShimmer();
     }
 }

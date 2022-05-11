@@ -14,8 +14,12 @@
     <string name="text_juan">Juan Dela Cruz</string>
     <string name="text_ok">OK</string>
 
+    <!-- DIALOG MESSAGE -->
     <string name="network_failure">No internet connection. Check your network settings and try again.</string>
     <string name="network_failure_access_feature">Internet connection is required to access this feature.</string>
+    <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="internal_server_error">Internal server error. Please try again later.</string>
+    <string name="register_successful">Your account was successfully registered! You can now Sign In!</string>
 
     <!-- URLS -->
     <string name="base_url">Sign up!</string>

@@ -1,6 +1,7 @@
 package com.fea.floodmapp.main.views;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -24,6 +25,7 @@ import com.fea.floodmapp.databinding.ActivitySettingsBinding;
 import com.fea.floodmapp.main.database.DatabaseHelper;
 import com.fea.floodmapp.main.datamodels.UserInfoModel;
 import com.fea.floodmapp.main.dependencies.MyApp;
+import com.fea.floodmapp.main.utils.CommonMethods;
 import com.fea.floodmapp.main.utils.KeyboardUtil;
 import com.fea.floodmapp.main.utils.SessionManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,9 +41,13 @@ public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = "SettingsActivity";
     GoogleSignInClient googleSignInClient;
     DatabaseHelper databaseHelper;
+    AlertDialog dialog;
 
     @Inject
     SessionManager sessionManager;
+
+    @Inject
+    CommonMethods commonMethods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,21 +123,36 @@ public class SettingsActivity extends AppCompatActivity {
         activitySettingsBinding.tvSettingsSignout.setOnClickListener(v -> signOutAccount());
 
         activitySettingsBinding.rltSettingsAboutUs.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AppWebviewActivity.class);
-            intent.putExtra("web_view_type", 0);
-            startActivity(intent);
+            if (!commonMethods.isOnline(this)){
+                dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+                dialog.show();
+            } else {
+                Intent intent = new Intent(this, AppWebviewActivity.class);
+                intent.putExtra("web_view_type", 0);
+                startActivity(intent);
+            }
         });
 
         activitySettingsBinding.rltSettingsTerms.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AppWebviewActivity.class);
-            intent.putExtra("web_view_type", 1);
-            startActivity(intent);
+            if (!commonMethods.isOnline(this)){
+                dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+                dialog.show();
+            } else {
+                Intent intent = new Intent(this, AppWebviewActivity.class);
+                intent.putExtra("web_view_type", 1);
+                startActivity(intent);
+            }
         });
 
         activitySettingsBinding.rltSettingsPrivacyPolicy.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AppWebviewActivity.class);
-            intent.putExtra("web_view_type", 2);
-            startActivity(intent);
+            if (!commonMethods.isOnline(this)){
+                dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+                dialog.show();
+            } else {
+                Intent intent = new Intent(this, AppWebviewActivity.class);
+                intent.putExtra("web_view_type", 2);
+                startActivity(intent);
+            }
         });
     }
 

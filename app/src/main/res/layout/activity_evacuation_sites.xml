@@ -22,11 +22,27 @@
         android:layout_below="@+id/iv_header_status_bar_overlay"
         android:layout_marginTop="0dp" />
 
-    <ScrollView
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_evacsite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/inc_header"
         android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        app:shimmer_duration="1300"
+        >
+
+        <include layout="@layout/evacuation_site_shimmer"/>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <ScrollView
+        android:id="@+id/sv_evacsite_locations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/inc_header"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
         >
 
         <LinearLayout
@@ -39,6 +55,5 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 </RelativeLayout>

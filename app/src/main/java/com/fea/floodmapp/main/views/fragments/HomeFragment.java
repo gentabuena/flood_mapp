@@ -135,8 +135,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void goToEvacuationSites() {
-        Intent intent = new Intent(context, EvacuationSitesActivity.class);
-        startActivity(intent);
+        if (commonMethods.isOnline(context)){
+            Intent intent = new Intent(context, EvacuationSitesActivity.class);
+            startActivity(intent);
+        } else {
+            dialog = commonMethods.getAlertDialog(context, getResources().getString(R.string.network_failure_access_feature));
+            dialog.show();
+        }
     }
 
     private void gotoEmergencyNumbers() {
@@ -165,8 +170,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void gotoWeatherUpdates() {
-        Intent intent = new Intent(context, WeatherForecastActivity.class);
-        startActivity(intent);
+        if (commonMethods.isOnline(context)){
+            Intent intent = new Intent(context, WeatherForecastActivity.class);
+            startActivity(intent);
+        } else {
+            dialog = commonMethods.getAlertDialog(context, getResources().getString(R.string.network_failure_access_feature));
+            dialog.show();
+        }
     }
 
     private void initLocationHandler() {

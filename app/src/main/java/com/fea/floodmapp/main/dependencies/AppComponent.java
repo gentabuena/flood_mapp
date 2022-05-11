@@ -3,6 +3,7 @@ package com.fea.floodmapp.main.dependencies;
 import com.fea.floodmapp.main.utils.ApiHelper;
 import com.fea.floodmapp.main.utils.CommonMethods;
 import com.fea.floodmapp.main.utils.SessionManager;
+import com.fea.floodmapp.main.views.AppWebviewActivity;
 import com.fea.floodmapp.main.views.EvacuationSitesActivity;
 import com.fea.floodmapp.main.views.MainActivity;
 import com.fea.floodmapp.main.views.SettingsActivity;
@@ -29,6 +30,7 @@ public interface AppComponent {
     void inject(SettingsActivity settingsActivity);
     void inject(WeatherForecastActivity weatherForecastActivity);
     void inject(EvacuationSitesActivity evacuationSitesActivity);
+    void inject(AppWebviewActivity appWebviewActivity);
 
     // Utilities
     void inject(SessionManager sessionManager);

@@ -1,5 +1,6 @@
 package com.fea.floodmapp.main.views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,20 +8,27 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.ActivityWeatherForecastBinding;
 import com.fea.floodmapp.main.dependencies.MyApp;
+import com.fea.floodmapp.main.utils.CommonMethods;
 import com.fea.floodmapp.main.utils.SessionManager;
 
 import javax.inject.Inject;
 
-public class WeatherForecastActivity extends AppCompatActivity {
+public class WeatherForecastActivity extends AppCompatActivity  {
 
     ActivityWeatherForecastBinding activityWeatherForecastBinding;
     @Inject
     SessionManager sessionManager;
+    @Inject
+    CommonMethods commonMethods;
+
+    AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +39,21 @@ public class WeatherForecastActivity extends AppCompatActivity {
 
         overlayGradientImageViewOnStatusBar();
         setViews();
-        loadWebViewURL();
+        commonMethods.showProgressDialog(this);
+        try{
+            loadWebViewURL();
+        } catch (Exception e) {
+            Toast.makeText(this, getResources().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!commonMethods.isOnline(this)){
+            dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+            dialog.show();
+        }
     }
 
     private void overlayGradientImageViewOnStatusBar(){
@@ -62,8 +84,12 @@ public class WeatherForecastActivity extends AppCompatActivity {
     }
 
     private void loadWebViewURL(){
-        activityWeatherForecastBinding.wvWeatherForecast.setWebViewClient(new WebViewClient());
-        activityWeatherForecastBinding.wvWeatherForecast.loadUrl("https://fea-app.herokuapp.com/weathers?lat=" + sessionManager.getCurrentLat() +"&long=" + sessionManager.getCurrentLong());
+        activityWeatherForecastBinding.wvWeatherForecast.setWebViewClient(new WebViewClient(){
+            public void onPageFinished(WebView view, String url) {
+                commonMethods.hideProgressDialog();
+            }
+        });
+        activityWeatherForecastBinding.wvWeatherForecast.loadUrl("https://fea-app.herokuapp.com/weathers?lat=" + sessionManager.getCurrentLat() + "&long=" + sessionManager.getCurrentLong() + "&city=" + sessionManager.getCity());
     }
 
     @Override

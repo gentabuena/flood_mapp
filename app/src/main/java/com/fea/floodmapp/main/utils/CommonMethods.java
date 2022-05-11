@@ -1,7 +1,10 @@
 package com.fea.floodmapp.main.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.Html;
@@ -16,6 +19,8 @@ import com.fea.floodmapp.R;
 import com.fea.floodmapp.main.dependencies.MyApp;
 
 public class CommonMethods {
+
+    Dialog progressDialog;
 
     public CommonMethods() {
         MyApp.getAppComponent().inject(this);
@@ -42,4 +47,18 @@ public class CommonMethods {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
+
+    public void showProgressDialog(Context context){
+        progressDialog = new Dialog(context, R.style.AlertDialog);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.setContentView(R.layout.dialog_loading);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+    }
+
+    public void hideProgressDialog(){
+        progressDialog.dismiss();
+    }
+
 }
