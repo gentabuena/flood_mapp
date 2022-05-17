@@ -28,6 +28,7 @@
     <color name="gray_line">#CACACA</color>
 
     <color name="dark_gray">#BFBFBF</color>
+    <color name="shimmer_placeholder">#bcbec2</color>
 
     <!-- FLOOD PREPAREDNESS GUIDLINES -->
     <color name="flood_very_high_blue">#071194</color>
@@ -39,4 +40,5 @@
     <color name="warning_level_2">#FF5F1A</color>
     <color name="warning_level_1">#FAFF1A</color>
 
+    <color name="full_red">#c20808</color>
 </resources>

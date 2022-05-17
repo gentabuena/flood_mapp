@@ -71,6 +71,7 @@
             >
 
             <RelativeLayout
+                android:id="@+id/rlt_frag_home_evacuation_sites_parent"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
@@ -97,6 +98,8 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:scaleType="fitCenter"
                         android:src="@drawable/home_icon_evacuation"
                         android:visibility="visible" />
@@ -105,14 +108,18 @@
                         android:id="@+id/rlt_frag_home_evac_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
+                        android:layout_centerInParent="true"
+                        android:clickable="false"
+                        android:focusable="false">
 
                         <TextView
                             android:id="@+id/tv_frag_home_evacuation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:focusable="false"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="Evacuation Sites"
+                            android:text="@string/text_evacuation_sites"
                             android:textColor="@color/white"
                             android:textSize="23sp" />
 
@@ -122,8 +129,10 @@
                             android:layout_below="@+id/tv_frag_home_evacuation"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:focusable="false"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="Click here to all evacuation sites"
+                            android:text="@string/click_evacuation_sites"
                             android:textColor="@color/white"
                             android:textSize="11sp" />
 
@@ -135,6 +144,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rlt_frag_home_weather_forecast_parent"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
@@ -161,6 +171,8 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:scaleType="fitCenter"
                         android:src="@drawable/homepage_icon_weather_rev"
                         android:visibility="visible" />
@@ -169,14 +181,18 @@
                         android:id="@+id/rlt_frag_home_weather_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
+                        android:layout_centerInParent="true"
+                        android:clickable="false"
+                        android:focusable="false">
 
                         <TextView
                             android:id="@+id/tv_frag_home_weather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:focusable="false"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="Weather Forecast"
+                            android:text="@string/text_weather_forecast"
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="23sp" />
 
@@ -186,8 +202,10 @@
                             android:layout_below="@+id/tv_frag_home_weather"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:focusable="false"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="Click here for weather updates"
+                            android:text="@string/click_weather_forecast"
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="11sp" />
 
@@ -209,8 +227,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollIndicators="none"
-                    android:scrollbars="none"
-                    >
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -226,8 +243,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_gradient_safety_precautions"
-                            android:visibility="visible"
-                            >
+                            android:visibility="visible">
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -262,8 +278,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="10dp"
                             android:background="@drawable/bg_gradient_safety_precautions"
-                            android:visibility="visible"
-                            >
+                            android:visibility="visible">
 
                             <ImageView
                                 android:layout_width="wrap_content"

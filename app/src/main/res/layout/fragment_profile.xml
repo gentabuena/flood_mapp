@@ -212,6 +212,23 @@
                             android:fontFamily="@font/montserrat_regular"
                             />
 
+                        <TextView
+                            android:id="@+id/tv_frag_profile_gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_blue_textview_rounded"
+                            android:layout_marginTop="5dp"
+                            android:textSize="15sp"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:paddingStart="15sp"
+                            android:paddingEnd="15sp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:visibility="visible"
+                            android:gravity="center"
+                            android:enabled="false"
+                            />
+
                         <EditText
                             android:id="@+id/et_frag_profile_gender"
                             android:layout_width="match_parent"
@@ -227,7 +244,7 @@
                             android:fontFamily="@font/montserrat_bold"
                             android:enabled="false"
                             android:maxLines="1"
-                            android:visibility="visible"
+                            android:visibility="gone"
                             android:inputType=""
                             android:maxLength="8"
                             />

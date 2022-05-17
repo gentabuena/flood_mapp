@@ -11,6 +11,7 @@ public class EvacuationSitesModel {
     private int population;
     private String created_at;
     private String updated_at;
+    private int status;
     private String distance;
 
     public int getId() {
@@ -51,5 +52,9 @@ public class EvacuationSitesModel {
 
     public String getDistance() {
         return distance;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

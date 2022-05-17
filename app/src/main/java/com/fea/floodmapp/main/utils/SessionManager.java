@@ -74,4 +74,12 @@ public class SessionManager {
     public void setCity(String city) {
         sharedPreferences.edit().putString("city", city).apply();
     }
+
+    public int getLocationPermissionDeniedCount() {
+        return sharedPreferences.getInt("locationPermissionDeniedCount", 0);
+    }
+
+    public void setLocationPermissionDeniedCount(int locationPermissionDeniedCount) {
+        sharedPreferences.edit().putInt("locationPermissionDeniedCount", locationPermissionDeniedCount).apply();
+    }
 }

@@ -1,5 +1,6 @@
 package com.fea.floodmapp.main.views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,10 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.fea.floodmapp.R;
 import com.fea.floodmapp.databinding.ActivityAppWebviewBinding;
+import com.fea.floodmapp.main.dependencies.MyApp;
+import com.fea.floodmapp.main.utils.CommonMethods;
+
+import javax.inject.Inject;
 
 public class AppWebviewActivity extends AppCompatActivity {
 
@@ -18,12 +24,18 @@ public class AppWebviewActivity extends AppCompatActivity {
     Intent intent;
     int appWebviewType;
 
+    @Inject
+    CommonMethods commonMethods;
+
+    AlertDialog dialog;
+
     private static final int ABOUT_US_PAGE = 0;
     private static final int TERMS_PAGE = 1; // 2 is Privacy Policy
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApp.getAppComponent().inject(this);
         activityAppWebviewBinding = ActivityAppWebviewBinding.inflate(getLayoutInflater());
         setContentView(activityAppWebviewBinding.getRoot());
 
@@ -32,7 +44,23 @@ public class AppWebviewActivity extends AppCompatActivity {
 
         overlayGradientImageViewOnStatusBar();
         setViews();
+        commonMethods.showProgressDialog(this);
+
         loadWebViewURL();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!commonMethods.isOnline(this)){
+            dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+            dialog.show();
+            try{ // Hide loading if still active
+                commonMethods.hideProgressDialog();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void overlayGradientImageViewOnStatusBar(){
@@ -63,7 +91,11 @@ public class AppWebviewActivity extends AppCompatActivity {
 
     private void loadWebViewURL(){
         String appWebviewURL = appWebviewType == ABOUT_US_PAGE ? getResources().getString(R.string.about_url) : appWebviewType == TERMS_PAGE ? getResources().getString(R.string.terms_conditions_url) : getResources().getString(R.string.privacy_policy_url);
-        activityAppWebviewBinding.wvAppWebpages.setWebViewClient(new WebViewClient());
+        activityAppWebviewBinding.wvAppWebpages.setWebViewClient(new WebViewClient(){
+            public void onPageFinished(WebView view, String url) {
+                commonMethods.hideProgressDialog();
+            }
+        });
         activityAppWebviewBinding.wvAppWebpages.loadUrl(appWebviewURL);
     }
 

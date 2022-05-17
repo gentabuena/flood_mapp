@@ -26,10 +26,10 @@ public class ApiHelper {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
 
-            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            /** HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-            httpClient.addInterceptor(loggingInterceptor);
+            httpClient.addInterceptor(loggingInterceptor); **/
         }
     }
 }

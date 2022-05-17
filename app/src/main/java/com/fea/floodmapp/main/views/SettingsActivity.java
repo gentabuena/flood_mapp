@@ -1,10 +1,14 @@
 package com.fea.floodmapp.main.views;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -24,6 +30,7 @@ import com.fea.floodmapp.databinding.ActivitySettingsBinding;
 import com.fea.floodmapp.main.database.DatabaseHelper;
 import com.fea.floodmapp.main.datamodels.UserInfoModel;
 import com.fea.floodmapp.main.dependencies.MyApp;
+import com.fea.floodmapp.main.utils.CommonMethods;
 import com.fea.floodmapp.main.utils.KeyboardUtil;
 import com.fea.floodmapp.main.utils.SessionManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,9 +46,14 @@ public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = "SettingsActivity";
     GoogleSignInClient googleSignInClient;
     DatabaseHelper databaseHelper;
+    AlertDialog dialog;
+    Dialog yesNoDialog;
 
     @Inject
     SessionManager sessionManager;
+
+    @Inject
+    CommonMethods commonMethods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
         fetchFromLocalDB();
         setImageViewToGmailDP();
         setViewsInfo();
+        initCustomYesNoDialog();
     }
 
     private void overlayGradientImageViewOnStatusBar(){
@@ -114,25 +127,66 @@ public class SettingsActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(userInfoModel.getUserAddress())) activitySettingsBinding.tvSettingsUserAddress.setVisibility(View.GONE);
         else activitySettingsBinding.tvSettingsUserAddress.setText(userInfoModel.getUserAddress());
 
-        activitySettingsBinding.tvSettingsSignout.setOnClickListener(v -> signOutAccount());
+        activitySettingsBinding.tvSettingsSignout.setOnClickListener(v -> confirmSignOut());
 
         activitySettingsBinding.rltSettingsAboutUs.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AppWebviewActivity.class);
-            intent.putExtra("web_view_type", 0);
-            startActivity(intent);
+            if (!commonMethods.isOnline(this)){
+                dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+                dialog.show();
+            } else {
+                Intent intent = new Intent(this, AppWebviewActivity.class);
+                intent.putExtra("web_view_type", 0);
+                startActivity(intent);
+            }
         });
 
         activitySettingsBinding.rltSettingsTerms.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AppWebviewActivity.class);
-            intent.putExtra("web_view_type", 1);
-            startActivity(intent);
+            if (!commonMethods.isOnline(this)){
+                dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+                dialog.show();
+            } else {
+                Intent intent = new Intent(this, AppWebviewActivity.class);
+                intent.putExtra("web_view_type", 1);
+                startActivity(intent);
+            }
         });
 
         activitySettingsBinding.rltSettingsPrivacyPolicy.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AppWebviewActivity.class);
-            intent.putExtra("web_view_type", 2);
-            startActivity(intent);
+            if (!commonMethods.isOnline(this)){
+                dialog = commonMethods.getAlertDialog(this, getResources().getString(R.string.network_failure));
+                dialog.show();
+            } else {
+                Intent intent = new Intent(this, AppWebviewActivity.class);
+                intent.putExtra("web_view_type", 2);
+                startActivity(intent);
+            }
         });
+    }
+
+    private void initCustomYesNoDialog(){
+        yesNoDialog = new Dialog(this, R.style.AlertDialog);
+        yesNoDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        yesNoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        yesNoDialog.setContentView(R.layout.dialog_yes_no);
+        yesNoDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void confirmSignOut(){
+        RelativeLayout rlt_no_signout = yesNoDialog.findViewById(R.id.rlt_dialog_no);
+        RelativeLayout rlt_yes_signout = yesNoDialog.findViewById(R.id.rlt_dialog_yes);
+        TextView dialogMessage = yesNoDialog.findViewById(R.id.tv_dialog_message);
+
+        dialogMessage.setText(getResources().getString(R.string.are_you_sure_signout));
+
+        rlt_no_signout.setOnClickListener(v -> {
+            yesNoDialog.dismiss();
+        });
+
+        rlt_yes_signout.setOnClickListener(v -> {
+            yesNoDialog.dismiss();
+            signOutAccount();
+        });
+        yesNoDialog.show();
     }
 
     private void signOutAccount(){

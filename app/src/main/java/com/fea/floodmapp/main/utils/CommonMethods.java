@@ -1,13 +1,18 @@
 package com.fea.floodmapp.main.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.Html;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
@@ -16,6 +21,8 @@ import com.fea.floodmapp.R;
 import com.fea.floodmapp.main.dependencies.MyApp;
 
 public class CommonMethods {
+
+    Dialog progressDialog;
 
     public CommonMethods() {
         MyApp.getAppComponent().inject(this);
@@ -41,5 +48,42 @@ public class CommonMethods {
         AlertDialog dialog = builder.create();
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
+    }
+
+    public void showProgressDialog(Context context){
+        progressDialog = new Dialog(context, R.style.AlertDialog);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.setContentView(R.layout.dialog_loading);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+    }
+
+    public void hideProgressDialog(){
+        progressDialog.dismiss();
+    }
+
+    public boolean isGPSEnabled(Context context){
+        LocationManager lm = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        boolean isGPSEnable;
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ignored) {}
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch(Exception ignored) {}
+
+        if(!gps_enabled && !network_enabled) {
+            // notify user
+            isGPSEnable = false;
+        } else {
+            isGPSEnable = true;
+        }
+        return isGPSEnable;
     }
 }

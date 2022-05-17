@@ -45,6 +45,7 @@ dependencies {
     // UI RELATED
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     // DEPENDENCY INJECTION
     implementation 'com.google.dagger:dagger-android:2.35.1'

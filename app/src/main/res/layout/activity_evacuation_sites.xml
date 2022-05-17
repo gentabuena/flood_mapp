@@ -22,23 +22,47 @@
         android:layout_below="@+id/iv_header_status_bar_overlay"
         android:layout_marginTop="0dp" />
 
-    <ScrollView
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_evacsite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/inc_header"
         android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        app:shimmer_duration="1300"
         >
 
-        <LinearLayout
-            android:id="@+id/llt_evacsite_location_container"
+        <include layout="@layout/evacuation_site_shimmer"/>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_evacsite_locations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inc_header"
+        >
+
+        <ScrollView
+            android:id="@+id/sv_evacsite_locations"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inc_header"
+            android:layout_alignParentBottom="true"
+            android:visibility="invisible"
             >
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llt_evacsite_location_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
 
-    </ScrollView>
+            </LinearLayout>
 
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>
