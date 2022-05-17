@@ -20,6 +20,8 @@
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
     <string name="internal_server_error">Internal server error. Please try again later.</string>
     <string name="register_successful">Your account was successfully registered! You can now Sign In!</string>
+    <string name="location_access">Location permission must be granted to use this app\'s features. Would you like to try again?</string>
+    <string name="are_you_sure_signout">Are you sure you want to Sign Out?</string>
 
     <!-- URLS -->
     <string name="base_url">Sign up!</string>
@@ -31,9 +33,11 @@
 
     <!-- EVACUATION SITES -->
     <string name="text_evacuation_sites">Evacuation Sites</string>
+    <string name="click_evacuation_sites">Click here to all evacuation sites</string>
 
     <!-- WEATHER FORECAST -->
     <string name="text_weather_forecast">Weather Forecast</string>
+    <string name="click_weather_forecast">Click here for weather updates</string>
 
     <!-- SIGNINUP ACTIVITY -->
     <string name="text_no_account">Don\'t have an account?</string>

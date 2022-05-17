@@ -89,7 +89,8 @@ public class WeatherForecastActivity extends AppCompatActivity  {
                 commonMethods.hideProgressDialog();
             }
         });
-        activityWeatherForecastBinding.wvWeatherForecast.loadUrl("https://fea-app.herokuapp.com/weathers?lat=" + sessionManager.getCurrentLat() + "&long=" + sessionManager.getCurrentLong() + "&city=" + sessionManager.getCity());
+        activityWeatherForecastBinding.wvWeatherForecast.loadUrl("https://fea-app.herokuapp.com/weathers?lat="
+                + sessionManager.getCurrentLat() + "&long=" + sessionManager.getCurrentLong() + "&city=" + sessionManager.getCity());
     }
 
     @Override

@@ -73,6 +73,7 @@ public class EvacuationSitesActivity extends AppCompatActivity {
         setViews();
         startShimmer();
         fetchEvacuationSitesAPI();
+        initReloadEvacuationSites();
     }
 
     private void overlayGradientImageViewOnStatusBar(){
@@ -231,5 +232,18 @@ public class EvacuationSitesActivity extends AppCompatActivity {
         activityEvacuationSitesBinding.svEvacsiteLocations.setVisibility(View.VISIBLE);
         activityEvacuationSitesBinding.shimmerEvacsite.setVisibility(View.INVISIBLE);
         activityEvacuationSitesBinding.shimmerEvacsite.stopShimmer();
+    }
+
+    private void initReloadEvacuationSites(){
+        activityEvacuationSitesBinding.refreshEvacsiteLocations.setOnRefreshListener(() -> {
+            startShimmer();
+            activityEvacuationSitesBinding.lltEvacsiteLocationContainer.removeAllViews();
+            fetchEvacuationSitesAPI();
+            stopReload();
+        });
+    }
+
+    private void stopReload(){
+        activityEvacuationSitesBinding.refreshEvacsiteLocations.setRefreshing(false);
     }
 }

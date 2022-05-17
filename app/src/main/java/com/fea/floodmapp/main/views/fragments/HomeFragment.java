@@ -3,9 +3,12 @@ package com.fea.floodmapp.main.views.fragments;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -22,10 +25,13 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fea.floodmapp.R;
@@ -70,6 +76,7 @@ public class HomeFragment extends Fragment {
     @Inject
     CommonMethods commonMethods;
 
+    Dialog yesNoDialog;
     AlertDialog dialog;
 
     int evacuationOrWeather = 0;
@@ -106,32 +113,31 @@ public class HomeFragment extends Fragment {
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(context, gso);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
+        initCustomYesNoDialog();
     }
 
     private void initializeViews() {
         fragmentHomeBinding.rltFragHomeEvacuationSites.setOnClickListener(v -> {
+            Log.d(TAG, "Evacuation Sites was click");
+            fragmentHomeBinding.rltFragHomeEvacuationSites.setEnabled(false);
             evacuationOrWeather = 0;
             initLocationHandler();
+            fragmentHomeBinding.rltFragHomeEvacuationSites.setEnabled(true);
         });
         fragmentHomeBinding.rltFragHomeWeatherForecast.setOnClickListener(v -> {
+            Log.d(TAG, "Weather forecast was click");
+            fragmentHomeBinding.rltFragHomeWeatherForecast.setEnabled(false);
             evacuationOrWeather = 1;
             initLocationHandler();
+            fragmentHomeBinding.rltFragHomeWeatherForecast.setEnabled(true);
         });
+
         fragmentHomeBinding.rltFragHomeSafetyPrecautions.setOnClickListener(v -> gotoSafetyPrecautions());
         fragmentHomeBinding.rltFragHomeEmergencyNumbers.setOnClickListener(v -> gotoEmergencyNumbers());
         fragmentHomeBinding.rltFragHomeFloodPreparedness.setOnClickListener(v -> gotoGuideLines());
         fragmentHomeBinding.rltFragHomePagasaUpdates.setOnClickListener(v -> gotoPagasaUpdates());
-        fragmentHomeBinding.ivFragHomeSignout.setOnClickListener(v -> signOutAccount());
-    }
-
-    private void signOutAccount() {
-        Log.d(TAG, "Sign out account method");
-        Intent intent = new Intent(context, SigninSignupActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        sessionManager.clearCache();
-        databaseHelper.dropTable(context);
-        googleSignInClient.signOut();
-        startActivity(intent);
+        fragmentHomeBinding.ivFragHomeSignout.setOnClickListener(v -> confirmSignOut());
     }
 
     private void goToEvacuationSites() {
@@ -181,51 +187,121 @@ public class HomeFragment extends Fragment {
 
     private void initLocationHandler() {
         Log.d(TAG, "Get Location method");
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
-                    Location location = task.getResult();
-                    if (location != null) {
-                        try {
-                            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                            Log.d(TAG, "Location here -- \n" +
-                                    "Latitude: " + addresses.get(0).getLatitude() + "\n " +
-                                    "Longitude: " + addresses.get(0).getLongitude() + "\n " +
-                                    "Address: " + addresses.get(0).getAddressLine(0) + "\n " +
-                                    "Locality: " + addresses.get(0).getLocality());
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) { // If already grannted
+            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
+                Location location = task.getResult();
+                if (location != null) {
+                    try {
+                        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        Log.d(TAG, "Location here -- \n" +
+                                "Latitude: " + addresses.get(0).getLatitude() + "\n " +
+                                "Longitude: " + addresses.get(0).getLongitude() + "\n " +
+                                "Address: " + addresses.get(0).getAddressLine(0) + "\n " +
+                                "Locality: " + addresses.get(0).getLocality());
 
-                            sessionManager.setCurrentLat(String.valueOf(addresses.get(0).getLatitude()));
-                            sessionManager.setCurrentLong(String.valueOf(addresses.get(0).getLongitude()));
-                            sessionManager.setCity(addresses.get(0).getLocality());
+                        sessionManager.setCurrentLat(String.valueOf(addresses.get(0).getLatitude()));
+                        sessionManager.setCurrentLong(String.valueOf(addresses.get(0).getLongitude()));
+                        sessionManager.setCity(addresses.get(0).getLocality());
 
-                            // GO TO this Screens after Successful fetch of location
-                            if (evacuationOrWeather == 0) goToEvacuationSites();
-                            else gotoWeatherUpdates();
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        // GO TO this Screens after Successful fetch of location
+                        if (evacuationOrWeather == 0) goToEvacuationSites();
+                        else gotoWeatherUpdates();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        if (!commonMethods.isOnline(context)){
+                            dialog = commonMethods.getAlertDialog(context, getResources().getString(R.string.network_failure_access_feature));
+                            dialog.show();
+                        } else {
                             Toast.makeText(context, "Something went wrong. Please try again.", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
-            } else {
-                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    Toast.makeText(context, "Location permission must be granted to use this feature, kindly enable it on the your phone's app permission.", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (!commonMethods.isGPSEnabled(context)){
+                        Toast.makeText(context, "GPS must be turned on to get your location! Kindly turn it on.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "Location can't be fetch at the moment. Please try again!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+            });
+        } else { // If not yet granted, ask for permission
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
         }
     }
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
+                    sessionManager.setLocationPermissionDeniedCount(0);
                     initLocationHandler();
                 } else {
-                    Toast.makeText(context, "Location permission must be granted to use this feature", Toast.LENGTH_SHORT).show();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        int deniedCount = sessionManager.getLocationPermissionDeniedCount();
+                        if (deniedCount >= 1){
+                            Toast.makeText(context, "Location permission must be granted to use this feature, kindly enable it on the your phone's app permission.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            sessionManager.setLocationPermissionDeniedCount(deniedCount + 1);
+                            reRunAllowAccessLocation();
+                        }
+                    } else {
+                        reRunAllowAccessLocation();
+                    }
                 }
             });
+
+    private void initCustomYesNoDialog(){
+        yesNoDialog = new Dialog(context, R.style.AlertDialog);
+        yesNoDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        yesNoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        yesNoDialog.setContentView(R.layout.dialog_yes_no);
+        yesNoDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void reRunAllowAccessLocation(){
+        RelativeLayout rlt_no_location = yesNoDialog.findViewById(R.id.rlt_dialog_no);
+        RelativeLayout rlt_yes_location = yesNoDialog.findViewById(R.id.rlt_dialog_yes);
+        TextView dialogMessage = yesNoDialog.findViewById(R.id.tv_dialog_message);
+
+        dialogMessage.setText(getResources().getString(R.string.location_access));
+
+        rlt_no_location.setOnClickListener(v -> {
+            Toast.makeText(context, "Location permission must be granted to use this feature, kindly enable it on the your phone's app permission.", Toast.LENGTH_SHORT).show();
+            yesNoDialog.dismiss();
+        });
+
+        rlt_yes_location.setOnClickListener(v -> {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+            yesNoDialog.dismiss();
+        });
+        yesNoDialog.show();
+    }
+
+    private void confirmSignOut(){
+        RelativeLayout rlt_no_signout = yesNoDialog.findViewById(R.id.rlt_dialog_no);
+        RelativeLayout rlt_yes_signout = yesNoDialog.findViewById(R.id.rlt_dialog_yes);
+        TextView dialogMessage = yesNoDialog.findViewById(R.id.tv_dialog_message);
+
+        dialogMessage.setText(getResources().getString(R.string.are_you_sure_signout));
+
+        rlt_no_signout.setOnClickListener(v -> {
+            yesNoDialog.dismiss();
+        });
+
+        rlt_yes_signout.setOnClickListener(v -> {
+            yesNoDialog.dismiss();
+            signOutAccount();
+        });
+        yesNoDialog.show();
+    }
+
+    private void signOutAccount() {
+        Log.d(TAG, "Sign out account method");
+        Intent intent = new Intent(context, SigninSignupActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        sessionManager.clearCache();
+        databaseHelper.dropTable(context);
+        googleSignInClient.signOut();
+        startActivity(intent);
+    }
 }

@@ -4,7 +4,7 @@ public class UserInfoApiModel {
     private int id;
     private String name;
     private String email;
-    private int age;
+    private String age;
     private String gender;
     private String contact;
     private String userAddress;
@@ -21,7 +21,7 @@ public class UserInfoApiModel {
         return email;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 

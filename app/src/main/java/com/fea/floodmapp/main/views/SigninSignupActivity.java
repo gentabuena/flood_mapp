@@ -187,7 +187,6 @@ public class SigninSignupActivity extends AppCompatActivity {
                         Log.d(TAG, "Response here -- " + strResponse);
                         SignInModel signInModel = gson.fromJson(strResponse, SignInModel.class);
 
-
                         JSONObject jsonObject = new JSONObject(strResponse);
                         String userAddress;
                         if (jsonObject.getJSONObject("user").has("userAddress")) {
@@ -196,14 +195,16 @@ public class SigninSignupActivity extends AppCompatActivity {
                             userAddress = "";
                         }
 
-                        userInfoModel = new UserInfoModel(fetchGmailAccount.getId(), signInModel.getUser().getEmail(), fetchGmailAccount.getDisplayName(), signInModel.getUser().getAge(), signInModel.getUser().getGender(), signInModel.getUser().getContact(), userAddress,(Objects.requireNonNull(fetchGmailAccount.getPhotoUrl()).toString()));
+                        int usersAge = TextUtils.isEmpty(signInModel.getUser().getAge()) ? 0 : Integer.parseInt(signInModel.getUser().getAge());
+
+                        userInfoModel = new UserInfoModel(fetchGmailAccount.getId(), signInModel.getUser().getEmail(), fetchGmailAccount.getDisplayName(), usersAge , signInModel.getUser().getGender(), signInModel.getUser().getContact(), userAddress,(Objects.requireNonNull(fetchGmailAccount.getPhotoUrl()).toString()));
                         databaseHelper.insertGmailInfoToSQL(SigninSignupActivity.this, userInfoModel);
                         sessionManager.setToken(signInModel.getAccess_token());
                         openFeaHomeScreen();
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
+                        googleSignInClient.signOut(); // Clear google SignIn Cache, to be able to choose an Account on SignIn
                     }
-
                 } else {
                     if (response.errorBody() != null){
                         try {
@@ -232,7 +233,7 @@ public class SigninSignupActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<ResponseBody > call, Throwable t) {
                 if (!TextUtils.isEmpty(t.getMessage())){
                     dialog = commonMethods.getAlertDialog(SigninSignupActivity.this, t.getMessage());
                 } else {
